@@ -1,0 +1,19 @@
+{
+  "name": "it2810-webutvikling-h18-prosjekt-2-gruppe--50",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-2-gruppe--50.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-2-gruppe--50/issues"
+  },
+  "homepage": "https://github.com/IT2810/it2810-webutvikling-h18-prosjekt-2-gruppe--50#readme"
+}
