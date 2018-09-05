@@ -5,6 +5,22 @@ import SelectMenu from './components/SelectMenu'
 import Display from './components/Display'
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+
+    }
+
+    this.updateCombinations = this.updateCombinations.bind(this);
+  }
+
+  updateCombinations = (image, sound, text) => {
+    console.log("Updating combinations")
+    console.log(image)
+    console.log(sound)
+    console.log(text)
+  }
+
   render() {
     return (
       <div className="App">
@@ -14,7 +30,7 @@ class App extends Component {
 
         <Display />
 
-        <SelectMenu />
+        <SelectMenu onSelect={this.updateCombinations}/>
       </div>
     );
   }

@@ -18,13 +18,13 @@ class SVG extends Component {
   getSVG(name) {
     axios.get("images/" + name + ".svg")
       .then(res => {
-        console.log(res)
         this.setState({image: res.data})
 
         var div = document.getElementById("svg-div")
         div.innerHTML = res.data
       })
   }
+
   render() {
     return (
       <div id="svg-div">

@@ -10,13 +10,15 @@ class Select extends Component {
       selected: false 
     }
 
-    this.handleClick = this.handleClick.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-  handleClick() {
+  onClick() {
     this.setState(prevState => ({
       selected: !prevState.selected
     }))
+
+    this.props.onSelect(this.props.type, this.props.name)
   }
 
   render() {
@@ -29,7 +31,7 @@ class Select extends Component {
     }
 
     return (
-      <div onClick={this.handleClick}>
+      <div onClick={this.onClick}>
         { checkboxIcon }
         <span> {this.props.name} </span>
       </div>
