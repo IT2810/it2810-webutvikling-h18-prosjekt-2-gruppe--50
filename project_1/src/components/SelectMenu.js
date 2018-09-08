@@ -13,7 +13,7 @@ class SelectMenu extends Component {
   }
 
   getImageOptions = () => {
-    return ["Img A", "Img B", "Img C", "Img D"]
+    return ["Horse", "Cat", "Dog", "Img D"]
   }
 
   getSoundOptions = () => {
@@ -29,10 +29,6 @@ class SelectMenu extends Component {
   }
 
   onSelect = (type, name) => {
-    console.log("On select in SelectMenu")
-    console.log(type)
-    console.log(name)
-
     if (type == "image") {
       this.setState({image: name})
     } else if (type == "sound") {
