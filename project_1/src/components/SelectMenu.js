@@ -5,7 +5,7 @@ class SelectMenu extends Component {
   constructor() {
     super();
     this.state = {
-      image: null,
+      image: "horse",
       sound: null,
       text: null
     }
@@ -32,7 +32,6 @@ class SelectMenu extends Component {
   updatingState(type, name) {
     let updateMap;
     if (type === "image") {
-      console.log("it was image")
       updateMap = {image: name}
     } else if (type === "sound") {
       updateMap = {sound: name}
@@ -47,9 +46,6 @@ class SelectMenu extends Component {
    let updateMap =  this.updatingState(type, name);
 
     this.setState(updateMap, () => {
-      console.log(type)
-      console.log(name)
-      console.log(this.state)
       this.props.onSelect(this.state.image, this.state.sound, this.state.text)
     })
 

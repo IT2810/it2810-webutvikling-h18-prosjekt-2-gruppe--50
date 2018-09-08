@@ -45,6 +45,7 @@
   display: grid;
 
   grid-template-columns: 70% 30%;
+  grid-template-rows: 500px auto;
 }
 
 .SelectMenu {
@@ -82,5 +83,10 @@ svg {
 
 .Text {
   grid-column: 2;
+  grid-row: 2;
+}
+
+.hidden {
+  display: none;
 }
 

@@ -7,7 +7,7 @@ class Select extends Component {
     super(props);
 
     this.state = {
-      selected: false 
+      selected: props.selected 
     }
 
     this.onClick = this.onClick.bind(this);

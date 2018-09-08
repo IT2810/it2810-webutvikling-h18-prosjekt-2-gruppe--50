@@ -5,12 +5,13 @@ import Text from './Text.js'
 import Sound from './Sound.js'
 
 class Display extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       image: null,
       sound: null,
-      text: null
+      text: null,
+      active: props.active
     }
 
     this.setImage = this.setImage.bind(this);
@@ -21,13 +22,23 @@ class Display extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    console.log("Updating combo in display")
-    console.log(newProps.combo)
-    this.setState({
-      image: newProps.combo.image, 
-      sound: newProps.combo.sound,
-      text: newProps.combo.text
-    });
+    if (newProps.combo != null) {
+      console.log("Updating combo in display")
+      console.log(newProps.combo.image)
+      this.setState({
+        image: newProps.combo.image, 
+        sound: newProps.combo.sound,
+        text: newProps.combo.text
+      });
+      
+    }
+    if (newProps.active != null) {
+      console.log("Updating active in display")
+      console.log(newProps.active)
+      this.setState({
+        active: newProps.active
+      })
+    }
   }
 
   setImage(name) {
@@ -36,11 +47,11 @@ class Display extends Component {
     this.setState({image: name})
   }
 
-
-
   render() {
+    console.log(this.state.active)
+    let hiddenClass = this.state.active ? "" : "hidden" 
     return (
-      <div className="Display">
+      <div className={"Display " + hiddenClass }>
 
         <SVG name={this.state.image}/>
 

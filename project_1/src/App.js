@@ -13,10 +13,14 @@ class App extends Component {
       textCategory: null,
       soundCategory: null,
       comboOne: null,
-      comboTwo: null
+      comboTwo: null,
+      comboThree: null,
+      comboFour: null,
+      activeNr: 2
     }
 
     this.updateCombinations = this.updateCombinations.bind(this);
+    this.showSelectedDisplay = this.showSelectedDisplay.bind(this);
 
     this.displayOne = React.createRef();
     this.displayTwo = React.createRef();
@@ -31,9 +35,9 @@ class App extends Component {
 
   updateCombinations(image, sound, text) {
     console.log("Updating combinations")
-    console.log(image)
+/*    console.log(image)
     console.log(sound)
-    console.log(text)
+    console.log(text)*/
 
     this.setState({
       imageCategory: image,
@@ -43,10 +47,24 @@ class App extends Component {
 
     image = "horse"
 
-
     this.setState({
       comboOne: {image: image + "1", sound: null, text: null},
-      comboTwo: {image: image + "2", sound: null, text: null}
+      comboTwo: {image: image + "2", sound: null, text: null},
+      comboThree: {image: image + "3", sound: null, text: null},
+      comboFour: {image: image + "4", sound: null, text: null}
+    })
+
+    console.log("Combos")
+    console.log(this.state.comboOne)
+    console.log(this.state.comboTwo)
+
+  }
+
+  showSelectedDisplay(nr) {
+    console.log("Selecting nr: ", nr)
+
+    this.setState({
+      activeNr: nr
     })
 
   }
@@ -60,10 +78,13 @@ class App extends Component {
 
         
         <div className="container">
-          <Tabs />
-          <Display ref={this.displayOne} combo={this.state.comboOne}/>
-
-          <SelectMenu onSelect={this.updateCombinations}/>
+          <Tabs onSelect={this.showSelectedDisplay} />
+          <Display ref={this.displayOne} combo={this.state.comboOne} active={this.state.activeNr === 1} />
+          <Display ref={this.displayTwo} combo={this.state.comboTwo} active={this.state.activeNr === 2} />
+          <Display ref={this.displayThree} combo={this.state.comboThree} active={this.state.activeNr === 3} />
+          <Display ref={this.displayFour} combo={this.state.comboFour} active={this.state.activeNr === 4} />
+            
+          <SelectMenu onSelect={this.updateCombinations} />
         </div>
 
       </div>
@@ -72,3 +93,4 @@ class App extends Component {
 }
 
 export default App;
+
