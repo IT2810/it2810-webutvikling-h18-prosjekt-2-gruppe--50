@@ -10,34 +10,49 @@ class SelectMenu extends Component {
       text: null
     }
     this.onSelect = this.onSelect.bind(this);
+    this.updatingState = this.updatingState.bind(this);
   }
 
   getImageOptions = () => {
-    return ["Horse", "Cat", "Dog", "Img D"]
+    return ["Horse", "Cat", "Dog"]
   }
 
   getSoundOptions = () => {
-    return ["Sound A", "Sound B", "Sound C", "Sound D"]
+    return ["Sound A", "Sound B", "Sound C"]
   }
 
   getTextOptions = () => {
-    return ["Text A", "Text B", "Text C", "Text D"]
+    return ["Text A", "Text B", "Text C"]
   }
 
   onChange() {
 
   }
 
-  onSelect = (type, name) => {
-    if (type == "image") {
-      this.setState({image: name})
-    } else if (type == "sound") {
-      this.setState({sound: name})
-    } else if (type == "text") {
-      this.setState({text: name})      
+  updatingState(type, name) {
+    let updateMap;
+    if (type === "image") {
+      console.log("it was image")
+      updateMap = {image: name}
+    } else if (type === "sound") {
+      updateMap = {sound: name}
+    } else if (type === "text") {
+      updateMap = {text: name}      
     }
 
-    this.props.onSelect(this.state.image, this.state.sound, this.state.text)
+    return updateMap
+  }
+ 
+  onSelect(type, name) {
+   let updateMap =  this.updatingState(type, name);
+
+    this.setState(updateMap, () => {
+      console.log(type)
+      console.log(name)
+      console.log(this.state)
+      this.props.onSelect(this.state.image, this.state.sound, this.state.text)
+    })
+
   }
 
   render() {
@@ -46,7 +61,7 @@ class SelectMenu extends Component {
     let textOptions = this.getTextOptions()
 
     return (
-      <div>
+      <div className="SelectMenu">
         <h3> Images </h3>
           {imageOptions.map((image, i) => {     
             return (<Select name={image} type="image" onSelect={this.onSelect} />)

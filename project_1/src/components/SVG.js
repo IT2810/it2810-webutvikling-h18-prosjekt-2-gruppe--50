@@ -15,6 +15,12 @@ class SVG extends Component {
     this.getSVG(this.props.name);
   }
 
+  componentWillReceiveProps(newProps) {
+    console.log("Props updated")
+    console.log(newProps)
+    this.getSVG(newProps.name)
+  }
+
   getSVG(name) {
     axios.get("images/" + name + ".svg")
       .then(res => {
@@ -27,7 +33,8 @@ class SVG extends Component {
 
   render() {
     return (
-      <div id="svg-div">
+      <div id="svg-div" className="SVG">
+        
       </div>
     )
   }
