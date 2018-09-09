@@ -36,12 +36,12 @@ class SelectMenu extends Component {
     } else if (type === "sound") {
       updateMap = {sound: name}
     } else if (type === "text") {
-      updateMap = {text: name}      
+      updateMap = {text: name}
     }
 
     return updateMap
   }
- 
+
   onSelect(type, name) {
    let updateMap =  this.updatingState(type, name);
 
@@ -59,16 +59,16 @@ class SelectMenu extends Component {
     return (
       <div className="SelectMenu">
         <h3> Images </h3>
-          {imageOptions.map((image, i) => {     
-            return (<Select name={image} type="image" onSelect={this.onSelect} />)
+          {imageOptions.map((image, i) => {
+            return (<Select key={i} name={image} type="image" onSelect={this.onSelect} />)
           })}
         <h3> Sounds </h3>
-          {soundOptions.map((sound, i) => {     
-            return (<Select name={sound} type="sound" onSelect={this.onSelect} />)
+          {soundOptions.map((sound, i) => {
+            return (<Select key={i} name={sound} type="sound" onSelect={this.onSelect} />)
           })}
         <h3> Texts </h3>
-          {textOptions.map((text, i) => {     
-            return (<Select name={text} type="text" onSelect={this.onSelect} />)
+          {textOptions.map((text, i) => {
+            return (<Select key={i} name={text} type="text" onSelect={this.onSelect} />)
           })}
 
       </div>

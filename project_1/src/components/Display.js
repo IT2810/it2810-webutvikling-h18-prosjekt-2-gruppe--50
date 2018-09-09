@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+//import axios from 'axios';
 import SVG from './SVG.js'
 import Text from './Text.js'
 import Sound from './Sound.js'
@@ -18,7 +18,7 @@ class Display extends Component {
   }
 
   componentDidMount() {
-    
+
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,11 +26,11 @@ class Display extends Component {
       console.log("Updating combo in display")
       console.log(newProps.combo.image)
       this.setState({
-        image: newProps.combo.image, 
+        image: newProps.combo.image,
         sound: newProps.combo.sound,
         text: newProps.combo.text
       });
-      
+
     }
     if (newProps.active != null) {
       console.log("Updating active in display")
@@ -49,7 +49,7 @@ class Display extends Component {
 
   render() {
     console.log(this.state.active)
-    let hiddenClass = this.state.active ? "" : "hidden" 
+    let hiddenClass = this.state.active ? "" : "hidden"
     return (
       <div className={"Display " + hiddenClass }>
 

@@ -20,23 +20,29 @@ class SVG extends Component {
   }
 
   getSVG(name) {
-    axios.get(`images/${name}.svg`)
-      .then(res => {
-        this.setState({image: res.data})
-      })
+    if (name !== null && name !== '') {
+      axios.get('images/' + name + '.svg')
+        .then(res => {
+          console.log("setting state", res.data)
+          this.setState({image: res.data})
+        })
+    }
   }
 
   render() {
-    const { image } = this.state
-
     return (
-      <div id="svg-div" className="SVG">
-        {image && <div dangerouslySetInnerHTML={{__html: image }} />}
-        
+      <div className="SVG" style={{height: '100%', width: '100%'}}>
+        <div style={{
+          height: '100%',
+          width: '100%',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center center',
+          backgroundRepeat: 'no-repeat',
+          backgroundImage: "url(\"data:image/svg+xml;utf8," + encodeURIComponent(this.state.image) + "\")"
+        }} />
       </div>
     )
   }
 }
 
 export default SVG;
-
