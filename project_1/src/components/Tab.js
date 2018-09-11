@@ -25,10 +25,8 @@ class Tab extends Component {
     let activeClassName = this.state.active ? 'active' : ''
 
     return (
-      <div className={'Tab ' + activeClassName} onClick={this.onClick}>
-        <button>
-          { this.props.name }
-        </button>
+      <div className={'Tab col-3 menu ' + activeClassName} onClick={this.onClick}>
+        <button class="button">combo {this.state.tabNr}</button>
       </div>
     )
   }

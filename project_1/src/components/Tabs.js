@@ -16,7 +16,7 @@ class Tabs extends Component {
 
   render () {
     return (
-      <div className='Tabs'>
+      <div className='Tabs row'>
         <Tab name='Combo 1' active tabNr={1} onSelect={this.onSelect} />
         <Tab name='Combo 2' active={false} tabNr={2} onSelect={this.onSelect} />
         <Tab name='Combo 3' active={false} tabNr={3} onSelect={this.onSelect} />

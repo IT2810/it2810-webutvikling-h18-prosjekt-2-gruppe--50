@@ -43,7 +43,7 @@ class Display extends Component {
 
         <SVG name={this.state.image} />
 
-        <Sound />
+        <Sound name={this.state.sound}/>
         <Text />
 
       </div>

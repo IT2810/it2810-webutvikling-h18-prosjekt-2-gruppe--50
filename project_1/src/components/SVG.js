@@ -30,7 +30,7 @@ class SVG extends Component {
 
   render () {
     return (
-      <div className='SVG' style={{height: '100%', width: '100%'}}>
+      <div className='SVG col-6' style={{height: '100%', width: '100%'}}>
         <div style={{
           height: '100%',
           width: '100%',

@@ -4,8 +4,10 @@ class Text extends Component {
 
   render() {
     return (
-      <div>
-        Text goes here
+      <div class="col-3 right">
+        <div class="aside">
+          <h2>Text goes here</h2>
+        </div>
       </div>
     )
   }

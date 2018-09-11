@@ -53,7 +53,7 @@ class SelectMenu extends Component {
     let textOptions = this.getTextOptions()
 
     return (
-      <div className="SelectMenu">
+      <div className="SelectMenu col-3 menu">
         <h3> Images </h3>
           {imageOptions.map((image, i) => {
             return (<Select key={i} name={image} type="image" onSelect={this.onSelect} />)

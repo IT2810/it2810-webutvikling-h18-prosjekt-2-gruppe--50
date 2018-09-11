@@ -35,8 +35,10 @@ class Select extends Component {
 
     return (
       <div onClick={this.onClick}>
-        { checkboxIcon }
-        <span> {this.props.name} </span>
+        <label className={'container_' + this.props.type}>{this.props.name}
+          <input type="radio" checked="checked" name="radio"></input>
+          <span className={"checkmark_" + this.props.type}></span>
+        </label>
       </div>
     )
   }
