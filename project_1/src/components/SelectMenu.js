@@ -5,7 +5,7 @@ class SelectMenu extends Component {
   constructor() {
     super();
     this.state = {
-      image: "horse",
+      image: null,
       sound: null,
       text: null
     }
@@ -23,10 +23,6 @@ class SelectMenu extends Component {
 
   getTextOptions = () => {
     return ["Text A", "Text B", "Text C"]
-  }
-
-  onChange() {
-
   }
 
   updatingState(type, name) {

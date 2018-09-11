@@ -1,31 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
 class Tab extends Component {
-
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
     this.state = {
       active: props.active,
       tabNr: props.tabNr
     }
 
-    this.onClick = this.onClick.bind(this);
+    this.onClick = this.onClick.bind(this)
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps (newProps) {
     this.setState({
-      active: newProps.active 
-    });
+      active: newProps.active
+    })
   }
 
-  onClick() {
-    console.log(this.state.tabNr)
+  onClick () {
     this.props.onSelect(this.state.tabNr)
   }
 
-  render() {
-    let activeClassName = this.state.active ? "active" : ""
-    
+  render () {
+    let activeClassName = this.state.active ? 'active' : ''
+
     return (
       <div className={'Tab ' + activeClassName} onClick={this.onClick}>
         <button>
@@ -36,4 +34,4 @@ class Tab extends Component {
   }
 }
 
-export default Tab;
+export default Tab

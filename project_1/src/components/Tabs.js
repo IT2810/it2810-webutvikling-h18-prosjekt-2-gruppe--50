@@ -1,33 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import Tab from './Tab.js'
 
 class Tabs extends Component {
-  constructor() {
-    super();
+  constructor () {
+    super()
     this.state = {
-
     }
 
-    this.onSelect = this.onSelect.bind(this);
-    //this.onClick = this.onClick.bind(this);
+    this.onSelect = this.onSelect.bind(this)
   }
 
-  onSelect(combo) {
-    console.log("Selecting combo " + combo)
-
+  onSelect (combo) {
     this.props.onSelect(combo)
   }
 
-  render() {
+  render () {
     return (
-      <div className="Tabs">
-        <Tab name="Combo 1" active={ true } tabNr={1} onSelect={this.onSelect}/>
-        <Tab name="Combo 2" active={ false } tabNr={2} onSelect={this.onSelect} />
-        <Tab name="Combo 3" active={ false } tabNr={3} onSelect={this.onSelect} />
-        <Tab name="Combo 4" active={ false } tabNr={4} onSelect={this.onSelect} />
+      <div className='Tabs'>
+        <Tab name='Combo 1' active tabNr={1} onSelect={this.onSelect} />
+        <Tab name='Combo 2' active={false} tabNr={2} onSelect={this.onSelect} />
+        <Tab name='Combo 3' active={false} tabNr={3} onSelect={this.onSelect} />
+        <Tab name='Combo 4' active={false} tabNr={4} onSelect={this.onSelect} />
       </div>
     )
   }
 }
 
-export default Tabs;
+export default Tabs
