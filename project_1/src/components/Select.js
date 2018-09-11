@@ -1,28 +1,31 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 
-import {FaCheckSquare, FaSquare} from 'react-icons/fa';
+import {FaCheckSquare, FaSquare} from 'react-icons/fa'
 
 class Select extends Component {
-  constructor(props) {
-    super(props);
+  constructor (props) {
+    super(props)
 
     this.state = {
-      selected: props.selected 
+      selected: false
     }
 
-    this.onClick = this.onClick.bind(this);
+    this.onClick = this.onClick.bind(this)
   }
 
-  onClick() {
+  onClick () {
     this.setState(prevState => ({
       selected: !prevState.selected
-    }))
-
-    this.props.onSelect(this.props.type, this.props.name)
+    }), function () {
+      console.log(this.state.selected)
+      if (this.state.selected) {
+        this.props.onSelect(this.props.type, this.props.name)
+      }
+    })
   }
 
-  render() {
-    let checkboxIcon;
+  render () {
+    let checkboxIcon
 
     if (this.state.selected) {
       checkboxIcon = <FaCheckSquare />
@@ -39,4 +42,4 @@ class Select extends Component {
   }
 }
 
-export default Select;
+export default Select
