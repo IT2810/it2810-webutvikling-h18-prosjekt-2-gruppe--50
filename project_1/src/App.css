@@ -1,5 +1,8 @@
 .App {
   text-align: center;
+  display: grid;
+  grid-template-columns: auto 1500px auto;
+  grid-template-rows: 100px auto 50px;
 }
 
 .App-logo {
@@ -9,9 +12,10 @@
 
 .App-header {
   background-color: #222;
-  height: 150px;
   padding: 20px;
   color: white;
+  grid-row: 1;
+  grid-column: 2;
 }
 
 .App-title {
@@ -26,3 +30,63 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.container {
+  display: grid;
+  grid-template-columns: 20% 50% 10% 20%;
+  grid-template-rows: 60px auto;
+  grid-row: 2;
+  grid-column: 2;
+}
+
+.Display {
+  grid-row: 2;
+  grid-column: 2 / span 1;
+  display: grid;
+
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 500px auto;
+}
+
+.SelectMenu {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.SVG {
+  max-height: 400px !important;
+  max-width: 600px !important;
+  grid-column: 1;
+}
+
+svg {
+  max-height: 400px !important;
+  max-width: 600px !important; 
+}
+.Tabs {
+  grid-row: 1;
+  grid-column: 1/4;
+  display: flex;
+}
+
+.Tab {
+
+}
+
+.Tab.active button {
+  background-color: blue;
+}
+
+.Sound {
+  grid-column: 2;
+}
+
+.Text {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.hidden {
+  display: none;
+}
+
