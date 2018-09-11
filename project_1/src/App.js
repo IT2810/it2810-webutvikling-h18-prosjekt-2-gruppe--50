@@ -29,6 +29,7 @@ class App extends Component {
   }
 
   updateCombinations (image, sound, text) {
+    image = image.toLowerCase()
     this.setState({
       imageCategory: image,
       soundCategory: sound,
