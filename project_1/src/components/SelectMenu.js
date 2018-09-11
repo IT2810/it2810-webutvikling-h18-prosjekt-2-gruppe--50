@@ -22,7 +22,7 @@ class SelectMenu extends Component {
   }
 
   getTextOptions = () => {
-    return ["Text A", "Text B", "Text C"]
+    return ["Poem", "Lyric", "Speech"]
   }
 
   updatingState(type, name) {
