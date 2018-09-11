@@ -21,6 +21,7 @@ class App extends Component {
 
     this.updateCombinations = this.updateCombinations.bind(this)
     this.showSelectedDisplay = this.showSelectedDisplay.bind(this)
+    this.randomNum = this.randomNum.bind(this)
 
     this.displayOne = React.createRef()
     this.displayTwo = React.createRef()
@@ -37,11 +38,20 @@ class App extends Component {
     })
 
     this.setState({
-      comboOne: {image: image + '1', sound: null, text: null},
-      comboTwo: {image: image + '2', sound: null, text: null},
-      comboThree: {image: image + '3', sound: null, text: null},
-      comboFour: {image: image + '4', sound: null, text: null}
+      comboOne: this.createCombo(image, sound, text),
+      comboTwo: this.createCombo(image, sound, text),
+      comboThree: this.createCombo(image, sound, text),
+      comboFour: this.createCombo(image, sound, text)
     })
+  }
+
+  createCombo (image, sound, text) {
+    return {image: image + this.randomNum(), sound: null, text: null}
+  }
+
+  randomNum () {
+    let num = Math.floor(1 + Math.random() * 4)
+    return num
   }
 
   showSelectedDisplay (nr) {
