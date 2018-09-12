@@ -37,7 +37,6 @@ class Text extends Component {
   }
 
   componentWillReceiveProps (newProps) {
-    console.log("newProps text", newProps);
     if (newProps.category !== null) {
       this.getText(categoryNameMap[newProps.category])
     }
@@ -47,7 +46,6 @@ class Text extends Component {
     if (category !== null && category !== '') {
       axios.get('texts/' + resourcesMap[category][this.props.index] + '.json')
         .then(res => {
-          console.log("getText", res)
           this.setState({data: res.data})
         })
     }
