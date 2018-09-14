@@ -225,8 +225,17 @@
 
   }
 
-  .SelectMeny {
+  .SelectMenu .dropdown, 
+  .Tabs {
+    display: flex;
+    margin: 0 16px;
+  }
 
+  .SelectMenu .dropdown p,
+  .Tabs p {
+    display: inline-block;
+    width: 20%;
+    text-align: left;
   }
   .SelectMenu .radio-menu {
     display: none;
@@ -235,19 +244,26 @@
   .SelectMenu .dropdown-menu {
    display: block; 
   }
-  .dropdown {
+
+/*  .dropdown {
     display: inline-block;
-    width: 30%;
+    width: 100%;
     margin: 0 1%;
-  }
+  }*/
 
   select {
     display: inline-block;
-    width: 100%;
+    width: 80%;
     padding: .375rem 1.75rem .375rem .75rem;
 
     border: 1px solid #ced4da;
     border-radius: .25rem;
+    margin: 8px 0px;
+  }
+
+  .Tab {
+    width: 25%;
+    display: inline-block
   }
 }
 

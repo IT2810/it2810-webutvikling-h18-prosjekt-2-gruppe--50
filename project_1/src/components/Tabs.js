@@ -26,7 +26,6 @@ class Tabs extends Component {
     }
 
     return tabs
-
   }
 
   render () {
@@ -34,7 +33,10 @@ class Tabs extends Component {
   
     return (
       <div className='Tabs row'>
-        { tabs }
+        <p> Combo </p>
+        <div>
+          { tabs }
+        </div>
       </div>
     )
   }
