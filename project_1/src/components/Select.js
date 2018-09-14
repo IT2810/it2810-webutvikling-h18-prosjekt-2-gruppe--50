@@ -26,6 +26,7 @@ class Select extends Component {
 
   render () {
     let checkboxIcon
+    let id = this.props.type + '_' + this.props.name.toLowerCase()
 
     if (this.state.selected) {
       checkboxIcon = <FaCheckSquare />
@@ -34,14 +35,15 @@ class Select extends Component {
     }
 
     return (
-      <div onClick={this.onClick}>
-        <label className={'container_' + this.props.type}>{this.props.name}
-          <input type="radio" checked="checked" name="radio"></input>
-          <span className={"checkmark_" + this.props.type}></span>
-        </label>
+      <div className="Select" onClick={this.onClick}>
+        <div className="radio-select">
+          <input type="radio" name={this.props.type} id={id}/>
+          <label for={id}> {this.props.name} </label> 
+        </div>
       </div>
     )
   }
 }
 
 export default Select
+

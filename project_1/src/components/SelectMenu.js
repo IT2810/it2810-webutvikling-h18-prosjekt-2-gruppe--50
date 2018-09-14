@@ -11,6 +11,7 @@ class SelectMenu extends Component {
     }
     this.onSelect = this.onSelect.bind(this);
     this.updatingState = this.updatingState.bind(this);
+    this.onSelectDrop = this.onSelectDrop.bind(this);
   }
 
   getImageOptions = () => {
@@ -44,7 +45,19 @@ class SelectMenu extends Component {
     this.setState(updateMap, () => {
       this.props.onSelect(this.state.image, this.state.sound, this.state.text)
     })
+  }
 
+  onSelectDrop(event) {
+    console.log(event.target.name)
+    this.onSelect(event.target.name, event.target.value)
+  }
+
+  onSelectImage(event) {
+    this.setState({
+      image: event.target.value
+    }, () => {
+      this.props.onSelect(this.state.image, this.state.sound, this.state.text)
+    })
   }
 
   render() {
@@ -53,23 +66,48 @@ class SelectMenu extends Component {
     let textOptions = this.getTextOptions()
 
     return (
-      <div className="SelectMenu col-3 menu">
-        <h3> Images </h3>
-          {imageOptions.map((image, i) => {
-            return (<Select key={i} name={image} type="image" onSelect={this.onSelect} />)
-          })}
-        <h3> Sounds </h3>
-          {soundOptions.map((sound, i) => {
-            return (<Select key={i} name={sound} type="sound" onSelect={this.onSelect} />)
-          })}
-        <h3> Texts </h3>
-          {textOptions.map((text, i) => {
-            return (<Select key={i} name={text} type="text" onSelect={this.onSelect} />)
-          })}
+      <div className="SelectMenu">
+        <div className="radio-menu">
+          <h3> Images </h3>
+            {soundOptions.map((image, i) => {
+              return (<Select key={i} name={image} type="image" onSelect={this.onSelect} />)
+            })}
+          <h3> Sounds </h3>
+            {soundOptions.map((sound, i) => {
+              return (<Select key={i} name={sound} type="sound" onSelect={this.onSelect} />)
+            })}
+          <h3> Texts </h3>
+            {textOptions.map((text, i) => {
+              return (<Select key={i} name={text} type="text" onSelect={this.onSelect} />)
+            })}
+        </div>
+      
 
+        <div className="dropdown-menu">
+          <h3> Images </h3>
+            <select onChange={this.onSelectDrop} name="image">
+              {imageOptions.map((image, i) => {
+                return <option value={image} name="image"> {image} </option>
+              })}
+            </select>
+          <h3> Sounds </h3>
+            <select onChange={this.onSelectDrop} name="sound">
+              {soundOptions.map((sound, i) => {
+                return <option value={sound}> {sound} </option>
+              })}
+            </select>
+          <h3> Texts </h3>
+            <select  onChange={this.onSelectDrop} name="text">
+              {textOptions.map((text, i) => {
+                return <option value={text}> {text} </option>
+              })}
+            </select>
+        </div>
       </div>
     );
   }
 }
 
 export default SelectMenu;
+
+

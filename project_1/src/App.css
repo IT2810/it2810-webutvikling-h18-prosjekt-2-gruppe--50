@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
 .App {
   text-align: center;
   display: grid;
-  grid-template-columns: auto 1500px auto;
+  grid-template-columns: auto auto auto;
   grid-template-rows: 100px auto 50px;
+  font-family: 'Roboto Condensed', serif;
+  font-color: rgb(33,37,41);
 }
 
 .App-logo {
@@ -33,7 +37,7 @@
 
 .container {
   display: grid;
-  grid-template-columns: 20% 50% 10% 20%;
+  grid-template-columns: 80% 20%;
   grid-template-rows: 60px auto;
   grid-row: 2;
   grid-column: 2;
@@ -41,7 +45,7 @@
 
 .Display {
   grid-row: 2;
-  grid-column: 2 / span 1;
+  grid-column: 1 / 2;
   display: grid;
 
   grid-template-columns: 70% 30%;
@@ -49,8 +53,12 @@
 }
 
 .SelectMenu {
-  grid-column: 3;
+  grid-column: 2;
   grid-row: 2;
+}
+
+.Select {
+  text-align: left;
 }
 
 .SVG {
@@ -175,10 +183,31 @@ html {
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
+
+.SelectMenu .dropdown-menu {
+  display: none;
+}
+
+.SelectMenu .radio-menu {
+  display: block;
+}
+
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class*="col-"] {
       width: 100%;
+  }
+
+  .SelectMenu .radio-menu {
+    display: none;
+  }
+
+  .SelectMenu .dropdown-menu {
+    display: block;
+  }
+
+  select {
+    width: 100%;
   }
 }
 
