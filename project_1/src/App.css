@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
 
+:root{
+  --primary-color: #5BC1F2;
+  --active-color: #2196f3;
+}
+
 .App {
   text-align: center;
   display: grid;
@@ -62,35 +67,17 @@
   text-align: left;
 }
 
-.SVG {
-  max-height: 400px !important;
-  max-width: 600px !important;
-  grid-column: 1;
+.Select input[type="radio"] {
+  color: rgba(191,191,191,.87)
 }
 
-svg {
-  max-height: 400px !important;
-  max-width: 600px !important; 
-}
-.Tabs {
-  grid-area: tabs;
-}
-
-.Tab.active button {
-  background-color: blue;
-}
-
-.Sound {
-  grid-column: 2;
-}
-
-.Text {
-  grid-column: 2;
-  grid-row: 2;
-}
-
-.hidden {
+.SelectMenu .dropdown-menu {
   display: none;
+}
+
+.SelectMenu .radio-menu {
+  display: block;
+}
 
 .SVG {
 
@@ -105,7 +92,28 @@ svg {
   height: 400px;
 }
 
-.button {
+.Tabs {
+  grid-area: tabs;
+}
+
+/*.Tab button {
+  background-color: var(--primary-color);
+}
+.Tab.active button {
+  background-color: var(--active-color);
+}*/
+
+.Sound {
+}
+
+.Text {
+}
+
+.hidden {
+  display: none;
+
+
+.Tab button {
   background-color: #33b5e5;
   border: purple;
   border-width: 2px;
@@ -123,6 +131,7 @@ svg {
   cursor: pointer;
 }
 
+
 /*Test for responsive design*/
 
 * {
@@ -137,10 +146,11 @@ svg {
   float: left;
   padding: 15px;
 }
-html {
+/*html {
   font-family: "Lucida Sans", sans-serif;
-}
-.header {
+}*/
+
+/*.header {
   background-color: #9933cc;
   color: #ffffff;
   padding: 15px;
@@ -175,7 +185,9 @@ html {
   font-size: 12px;
   padding: 15px;
 }
+
 /* For desktop: */
+/*
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
 .col-3 {width: 25%;}
@@ -188,15 +200,9 @@ html {
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+*/
 
 
-.SelectMenu .dropdown-menu {
-  display: none;
-}
-
-.SelectMenu .radio-menu {
-  display: block;
-}
 
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
@@ -252,12 +258,10 @@ html {
   }
 }
 
-/*Test for custom radio buttons*/
+/* Custom radio buttons*/
 
 /* The container */
-.container_music, 
-.container_art, 
-.container_text {
+.Select .radio-select {
   display: block;
   position: relative;
   padding-left: 35px;
@@ -271,67 +275,60 @@ html {
 }
 
 /* Hide the browser's default radio button */
-.container_music input, 
-.container_art input, 
-.container_text input {
+.Select input {
   position: absolute;
   opacity: 0;
   cursor: pointer;
 }
 
+.Select .radio-select {
+  position: relative;
+}
+
+.Select .radio-select label {
+  padding-left: 25px;
+}
 /* Create a custom radio button */
-.checkmark_music, 
-.checkmark_art, 
-.checkmark_text{
+.Select .checkmark {
   position: absolute;
   top: 0;
   left: 0;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background-color: #eee;
   border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
-.container_music:hover ~ .checkmark_music, 
-.container_art:hover ~ .checkmark_art, 
-.container_text:hover input ~ .checkmark_text {
+.Select .radio-select:hover ~ .checkmark {
   background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.container_music input:checked ~ .checkmark_music, 
-.container_art input:checked ~ .checkmark_art, 
-.container_text input:checked ~ .checkmark_text {
-  background-color: #2196F3;
+.Select .radio-select input:checked ~ .checkmark {
+  background-color: var(--active-color);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark_art:after, 
-.checkmark_music:after, 
-.checkmark_text:after {
+.Select .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
 /* Show the indicator (dot/circle) when checked */
-.container_music input:checked ~ .checkmark_music:after, 
-.container_art input:checked ~ .checkmark_art:after, 
-.container_text input:checked ~ .checkmark_text:after {
+.Select .radio-select input:checked ~ .checkmark:after {
   display: block;
 }
 
 /* Style the indicator (dot/circle) */
-.container_music .checkmark_music:after, 
-.container_art .checkmark_art:after, 
-.container_text .checkmark_text:after {
-top: 9px;
-left: 9px;
-width: 8px;
-height: 8px;
-border-radius: 50%;
-background: white;
+.Select .radio-select .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
 }
 
 .svg_div {

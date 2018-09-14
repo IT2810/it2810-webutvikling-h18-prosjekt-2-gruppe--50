@@ -36,10 +36,11 @@ class Select extends Component {
 
     return (
       <div className="Select" onClick={this.onClick}>
-        <div className="radio-select">
+        <label className="radio-select">
+          {this.props.name}
           <input type="radio" name={this.props.type} id={id}/>
-          <label htmlFor={id}> {this.props.name} </label> 
-        </div>
+          <span className="checkmark"></span> 
+        </label>
       </div>
     )
   }
