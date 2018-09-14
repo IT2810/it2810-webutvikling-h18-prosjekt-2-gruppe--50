@@ -38,7 +38,7 @@ class Select extends Component {
       <div className="Select" onClick={this.onClick}>
         <div className="radio-select">
           <input type="radio" name={this.props.type} id={id}/>
-          <label for={id}> {this.props.name} </label> 
+          <label htmlFor={id}> {this.props.name} </label> 
         </div>
       </div>
     )

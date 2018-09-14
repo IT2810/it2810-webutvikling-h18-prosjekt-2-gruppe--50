@@ -52,14 +52,6 @@ class SelectMenu extends Component {
     this.onSelect(event.target.name, event.target.value)
   }
 
-  onSelectImage(event) {
-    this.setState({
-      image: event.target.value
-    }, () => {
-      this.props.onSelect(this.state.image, this.state.sound, this.state.text)
-    })
-  }
-
   render() {
     let imageOptions = this.getImageOptions()
     let soundOptions = this.getSoundOptions()
@@ -69,7 +61,7 @@ class SelectMenu extends Component {
       <div className="SelectMenu">
         <div className="radio-menu">
           <h3> Images </h3>
-            {soundOptions.map((image, i) => {
+            {imageOptions.map((image, i) => {
               return (<Select key={i} name={image} type="image" onSelect={this.onSelect} />)
             })}
           <h3> Sounds </h3>
@@ -84,24 +76,30 @@ class SelectMenu extends Component {
       
 
         <div className="dropdown-menu">
-          <h3> Images </h3>
+          <div className="inline dropdown">
+            <h3> Images </h3>
             <select onChange={this.onSelectDrop} name="image">
               {imageOptions.map((image, i) => {
-                return <option value={image} name="image"> {image} </option>
+                return <option key={i} value={image} name="image"> {image} </option>
               })}
             </select>
-          <h3> Sounds </h3>
+          </div>
+          <div className="inline dropdown">
+            <h3> Sounds </h3>
             <select onChange={this.onSelectDrop} name="sound">
               {soundOptions.map((sound, i) => {
-                return <option value={sound}> {sound} </option>
+                return <option key={i} value={sound}> {sound} </option>
               })}
             </select>
-          <h3> Texts </h3>
+          </div>
+          <div className="inline dropdown">
+            <h3> Texts </h3>
             <select  onChange={this.onSelectDrop} name="text">
               {textOptions.map((text, i) => {
-                return <option value={text}> {text} </option>
+                return <option  key={i}value={text}> {text} </option>
               })}
             </select>
+          </div>
         </div>
       </div>
     );

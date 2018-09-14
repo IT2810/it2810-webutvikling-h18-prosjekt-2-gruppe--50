@@ -68,13 +68,13 @@ class App extends Component {
         </header>
 
         <div className='container'>
+          <SelectMenu onSelect={this.updateCombinations} />
           <Tabs onSelect={this.showSelectedDisplay} />
           <Display ref={this.displayOne} combo={this.state.comboOne} active={this.state.activeNr === 1} />
           <Display ref={this.displayTwo} combo={this.state.comboTwo} active={this.state.activeNr === 2} />
           <Display ref={this.displayThree} combo={this.state.comboThree} active={this.state.activeNr === 3} />
           <Display ref={this.displayFour} combo={this.state.comboFour} active={this.state.activeNr === 4} />
 
-          <SelectMenu onSelect={this.updateCombinations} />
         </div>
 
       </div>
