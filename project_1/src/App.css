@@ -47,6 +47,8 @@
 
 .Display {
   grid-area: display;
+  display: flex;
+  flex-direction: row;
 }
 
 .SelectMenu {
