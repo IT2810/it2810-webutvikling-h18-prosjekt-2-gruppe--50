@@ -30,13 +30,8 @@ class SVG extends Component {
 
   render () {
     return (
-      <div className='SVG col-6' style={{height: '100%', width: '100%'}}>
+      <div className='SVG'>
         <div style={{
-          height: '100%',
-          width: '100%',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
           backgroundImage: 'url("data:image/svg+xml;utf8,' + encodeURIComponent(this.state.image) + '")'
         }} />
       </div>
