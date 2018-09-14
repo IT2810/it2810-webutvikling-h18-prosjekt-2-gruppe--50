@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <div className='App'>
         <header className='App-header'>
-          <h1 className='App-title'>Project 1</h1>
+          <h1 className='App-title'>Combination creator</h1>
         </header>
 
         <div className='container'>
