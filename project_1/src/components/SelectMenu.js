@@ -76,7 +76,7 @@ class SelectMenu extends Component {
       
 
         <div className="dropdown-menu">
-          <div className="inline dropdown">
+          <div className="dropdown">
             <h3> Images </h3>
             <select onChange={this.onSelectDrop} name="image">
               {imageOptions.map((image, i) => {
@@ -84,7 +84,7 @@ class SelectMenu extends Component {
               })}
             </select>
           </div>
-          <div className="inline dropdown">
+          <div className="dropdown">
             <h3> Sounds </h3>
             <select onChange={this.onSelectDrop} name="sound">
               {soundOptions.map((sound, i) => {
@@ -92,7 +92,7 @@ class SelectMenu extends Component {
               })}
             </select>
           </div>
-          <div className="inline dropdown">
+          <div className="dropdown">
             <h3> Texts </h3>
             <select  onChange={this.onSelectDrop} name="text">
               {textOptions.map((text, i) => {

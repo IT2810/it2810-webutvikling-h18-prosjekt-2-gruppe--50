@@ -95,23 +95,6 @@
   grid-area: tabs;
 }
 
-/*.Tab button {
-  background-color: var(--primary-color);
-}
-.Tab.active button {
-  background-color: var(--active-color);
-}*/
-
-.Sound {
-}
-
-.Text {
-}
-
-.hidden {
-  display: none;
-
-
 .Tab button {
   background-color: var(--primary-color);
   border: purple;
@@ -133,6 +116,17 @@
 .Tab.active .button {
   background-color: var(--active-color);
 }
+
+.Sound {
+}
+
+.Text {
+}
+
+.hidden {
+  display: none;
+}
+
 
 
 /*Test for responsive design*/
@@ -210,7 +204,8 @@
 @media only screen and (max-width: 768px) {
   /* For mobile phones: */
   [class*="col-"] {
-      width: 100%;
+    width: 25%;
+    padding: 0 5px;
   }
 
   .App {
