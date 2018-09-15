@@ -44,7 +44,7 @@ class Display extends Component {
         <SVG name={this.state.image} />
 
         <Sound />
-        <Text />
+        <Text category={'Lyric'} index={0} />
 
       </div>
     )
