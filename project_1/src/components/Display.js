@@ -42,8 +42,7 @@ class Display extends Component {
       <div className={'Display ' + hiddenClass}>
 
         <SVG name={this.state.image} />
-
-        <Sound />
+        <Sound name={this.state.sound}/>
         <Text category={'Lyric'} index={0} />
 
       </div>

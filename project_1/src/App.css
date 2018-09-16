@@ -1,92 +1,465 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+:root{
+  --primary-color: #5BC1F2;
+  --active-color: #2196f3;
+}
+
 .App {
   text-align: center;
   display: grid;
-  grid-template-columns: auto 1500px auto;
-  grid-template-rows: 100px auto 50px;
-}
+  font-family: 'Roboto Condensed', serif;
+  font-color: rgb(33,37,41);
+  background-color: #f8f9fa;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+  grid-gap: 20px;
+  grid-template-areas:
+    "header"
+    "container"
 }
 
 .App-header {
-  background-color: #222;
-  padding: 20px;
-  color: white;
-  grid-row: 1;
-  grid-column: 2;
+  background-color: #8CFFBE;
+  color: #3D3D41;
+
+  grid-area: header;
 }
 
 .App-title {
-  font-size: 1.5em;
 }
 
 .App-intro {
   font-size: large;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 .container {
   display: grid;
-  grid-template-columns: 20% 50% 10% 20%;
-  grid-template-rows: 60px auto;
-  grid-row: 2;
-  grid-column: 2;
+  width: 1200px;
+  margin: 0 auto;
+
+  grid-area: container;
+
+  grid-template-areas:
+    "tabs tabs tabs"
+    "display display selectMenu";
+
 }
 
 .Display {
-  grid-row: 2;
-  grid-column: 2 / span 1;
-  display: grid;
-
-  grid-template-columns: 70% 30%;
-  grid-template-rows: 500px auto;
+  grid-area: display;
+  display: flex;
+  flex-direction: row;
 }
 
 .SelectMenu {
-  grid-column: 3;
-  grid-row: 2;
+  grid-area: selectMenu;
+}
+
+.Select {
+  text-align: left;
+}
+
+.Select input[type="radio"] {
+  color: rgba(191,191,191,.87)
+}
+
+.SelectMenu .dropdown-menu {
+  display: none;
+}
+
+.SelectMenu .radio-menu {
+  display: block;
 }
 
 .SVG {
-  max-height: 400px !important;
-  max-width: 600px !important;
-  grid-column: 1;
+  width: 100%;
+  height: 100%;
+  padding: 16px;
 }
 
-svg {
-  max-height: 400px !important;
-  max-width: 600px !important; 
+.SVG div {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 400px;
 }
+
 .Tabs {
-  grid-row: 1;
-  grid-column: 1/4;
+  grid-area: tabs;
   display: flex;
 }
 
 .Tab {
-
+  display: inline-block;
 }
 
-.Tab.active button {
-  background-color: blue;
+.Tab button {
+  background-color: var(--primary-color);
+  border: purple;
+  border-width: 2px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+}
+
+.Tab .button:hover {
+  background-color: var(--active-color);
+  cursor: pointer;
+}
+
+.Tab.active .button {
+  background-color: var(--active-color);
 }
 
 .Sound {
-  grid-column: 2;
 }
 
 .Text {
-  grid-column: 2;
-  grid-row: 2;
 }
 
 .hidden {
   display: none;
+}
+
+
+
+/*Test for responsive design*/
+
+* {
+  box-sizing: border-box;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+    width: 25%;
+    padding: 0 5px;
+  }
+
+  .App {
+    
+  }
+
+  .container {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-areas:
+      "selectMenu"
+      "tabs"
+      "display";
+
+    width: 100%;
+  }
+
+  .Display {
+
+  }
+
+  .SelectMenu .dropdown, 
+  .Tabs {
+    display: flex;
+    margin: 0 16px;
+  }
+
+  .SelectMenu .dropdown p,
+  .Tabs p {
+    display: inline-block;
+    width: 20%;
+    text-align: left;
+  }
+  .SelectMenu .radio-menu {
+    display: none;
+  }
+
+  .SelectMenu .dropdown-menu {
+   display: block; 
+  }
+
+  select {
+    display: inline-block;
+    width: 80%;
+    padding: .375rem 1.75rem .375rem .75rem;
+
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    margin: 8px 0px;
+  }
+
+  .Tabs > div {
+    width: 80%;
+  }
+
+  .Tab {
+    width: 25%;
+    display: inline-block
+  }
+}
+
+/**
+Custom radio buttons
+**/
+
+/* The container */
+.Select .radio-select {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.Select input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.Select .radio-select {
+  position: relative;
+}
+
+.Select .radio-select label {
+  padding-left: 25px;
+}
+/* Create a custom radio button */
+.Select .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.Select .radio-select:hover ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.Select .radio-select input:checked ~ .checkmark {
+  background-color: var(--active-color);
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.Select .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.Select .radio-select input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.Select .radio-select .checkmark:after {
+  top: 6px;
+  left: 6px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+}
+
+.svg_div {
+  width: 100%;
+  height: 400px;
+  background-image: url('logo.svg');
+}
+
+.button {
+  background-color: #33b5e5;
+  border: purple;
+  border-width: 2px;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #0099cc;
+  cursor: pointer;
+}
+
+/*Test for responsive design*/
+
+* {
+  box-sizing: border-box;
+}
+.row::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+.header {
+  background-color: #9933cc;
+  color: #ffffff;
+  padding: 15px;
+}
+.menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.menu li {
+  padding: 8px;
+  margin-bottom: 7px;
+  background-color: #33b5e5;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.menu li:hover {
+  background-color: #0099cc;
+}
+.aside {
+  background-color: #33b5e5;
+  padding: 15px;
+  color: #ffffff;
+  text-align: center;
+  font-size: 14px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.footer {
+  background-color: #0099cc;
+  color: #ffffff;
+  text-align: center;
+  font-size: 12px;
+  padding: 15px;
+}
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+  /* For mobile phones: */
+  [class*="col-"] {
+      width: 100%;
+  }
+}
+
+/*Test for custom radio buttons*/
+
+/* The container */
+.container_music, 
+.container_art, 
+.container_text {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 18px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container_music input, 
+.container_art input, 
+.container_text input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark_music, 
+.checkmark_art, 
+.checkmark_text{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container_music:hover ~ .checkmark_music, 
+.container_art:hover ~ .checkmark_art, 
+.container_text:hover input ~ .checkmark_text {
+  background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container_music input:checked ~ .checkmark_music, 
+.container_art input:checked ~ .checkmark_art, 
+.container_text input:checked ~ .checkmark_text {
+  background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark_art:after, 
+.checkmark_music:after, 
+.checkmark_text:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container_music input:checked ~ .checkmark_music:after, 
+.container_art input:checked ~ .checkmark_art:after, 
+.container_text input:checked ~ .checkmark_text:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container_music .checkmark_music:after, 
+.container_art .checkmark_art:after, 
+.container_text .checkmark_text:after {
+top: 9px;
+left: 9px;
+width: 8px;
+height: 8px;
+border-radius: 50%;
+background: white;
 }
 

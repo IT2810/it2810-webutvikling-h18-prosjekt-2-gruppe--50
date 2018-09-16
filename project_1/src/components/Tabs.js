@@ -5,22 +5,38 @@ class Tabs extends Component {
   constructor () {
     super()
     this.state = {
+      activeNr: 1
     }
 
     this.onSelect = this.onSelect.bind(this)
+    this.createTabs = this.createTabs.bind(this)
   }
 
   onSelect (combo) {
+    this.setState({activeNr: combo})
     this.props.onSelect(combo)
   }
 
+  createTabs() {
+    let tabs = []
+    for (let i = 1; i < 5; i++) {
+      let active = this.state.activeNr === i
+      let tab = <Tab active={active} key={i} tabNr={i} onSelect={this.onSelect} />
+      tabs.push(tab)
+    }
+
+    return tabs
+  }
+
   render () {
+    var tabs = this.createTabs()
+  
     return (
-      <div className='Tabs'>
-        <Tab name='Combo 1' active tabNr={1} onSelect={this.onSelect} />
-        <Tab name='Combo 2' active={false} tabNr={2} onSelect={this.onSelect} />
-        <Tab name='Combo 3' active={false} tabNr={3} onSelect={this.onSelect} />
-        <Tab name='Combo 4' active={false} tabNr={4} onSelect={this.onSelect} />
+      <div className='Tabs row'>
+        <p> Combo </p>
+        <div>
+          { tabs }
+        </div>
       </div>
     )
   }

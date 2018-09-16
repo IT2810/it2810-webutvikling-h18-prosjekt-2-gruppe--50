@@ -26,8 +26,8 @@ class Tab extends Component {
 
     return (
       <div className={'Tab ' + activeClassName} onClick={this.onClick}>
-        <button>
-          { this.props.name }
+        <button className="button"> 
+          {this.state.tabNr}
         </button>
       </div>
     )

@@ -53,6 +53,7 @@ class Text extends Component {
 
   render () {
     return (
+
       <div>
         <h3><b>{this.state.data.title}</b></h3>
         <pre>{this.state.data.text}</pre>

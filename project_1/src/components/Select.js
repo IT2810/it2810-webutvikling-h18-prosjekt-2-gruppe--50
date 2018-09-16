@@ -17,7 +17,6 @@ class Select extends Component {
     this.setState(prevState => ({
       selected: !prevState.selected
     }), function () {
-      console.log(this.state.selected)
       if (this.state.selected) {
         this.props.onSelect(this.props.type, this.props.name)
       }
@@ -25,21 +24,17 @@ class Select extends Component {
   }
 
   render () {
-    let checkboxIcon
-
-    if (this.state.selected) {
-      checkboxIcon = <FaCheckSquare />
-    } else {
-      checkboxIcon = <FaSquare />
-    }
-
     return (
-      <div onClick={this.onClick}>
-        { checkboxIcon }
-        <span> {this.props.name} </span>
+      <div className="Select" onClick={this.onClick}>
+        <label className="radio-select">
+          {this.props.name}
+          <input type="radio" name={this.props.type}/>
+          <span className="checkmark"></span> 
+        </label>
       </div>
     )
   }
 }
 
 export default Select
+
