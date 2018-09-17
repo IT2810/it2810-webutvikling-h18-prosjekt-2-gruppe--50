@@ -19,7 +19,7 @@ class SelectMenu extends Component {
   }
 
   getSoundOptions = () => {
-    return ["Sound A", "Sound B", "Sound C"]
+    return ["Classic", "HipHop", "Nature"]
   }
 
   getTextOptions = () => {
@@ -87,7 +87,7 @@ class SelectMenu extends Component {
             <p> Sounds </p>
             <select onChange={this.onSelectDrop} name="sound">
               {soundOptions.map((sound, i) => {
-                return <option key={i} value={sound}> {sound} </option>
+                return <option key={i} value={sound} name="sound"> {sound} </option>
               })}
             </select>
           </div>

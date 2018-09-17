@@ -15,6 +15,7 @@ class Display extends Component {
     }
 
     this.setImage = this.setImage.bind(this)
+    this.setSound = this.setSound.bind(this)
   }
 
   componentWillReceiveProps (newProps) {
@@ -34,6 +35,10 @@ class Display extends Component {
 
   setImage (name) {
     this.setState({image: name})
+  }
+
+  setSound (name) {
+    this.setState({sound: name})
   }
 
   render () {
