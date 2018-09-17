@@ -32,6 +32,7 @@ class App extends Component {
   updateCombinations (image, sound, text) {
     if (image !== null) {
       image = image.toLowerCase()
+      sound = sound.toLowerCase()
     }
     this.setState({
       imageCategory: image,
@@ -48,7 +49,7 @@ class App extends Component {
   }
 
   createCombo (image, sound, text) {
-    return {image: image + this.randomNum(), sound: null, text: null}
+    return {image: image + this.randomNum(), sound: sound + this.randomNum(), text: null}
   }
 
   randomNum () {
