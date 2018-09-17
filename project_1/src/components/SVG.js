@@ -40,6 +40,7 @@ class SVG extends Component {
     if (this.state.image) {
       credits = <p> Image found at <a target="_blank" href={this.state.creditsUrl} > openclipart.org </a> </p>
     }
+    
     return (
       <div className='SVG'>
         <div 
