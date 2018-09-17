@@ -53,8 +53,10 @@ class App extends Component {
   updateCombinations (image, sound, text) {
     if (image !== null) {
       image = image.toLowerCase()
+      sound = sound.toLowerCase()
     }
     this.setState({customCombo: getCombo(image, sound, text), showCustomCombo: true})
+
   }
 
   showSelectedDisplay (nr) {
