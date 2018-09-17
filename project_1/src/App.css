@@ -9,7 +9,7 @@
   text-align: center;
   display: grid;
   font-family: 'Roboto Condensed', serif;
-  font-color: rgb(33,37,41);
+  text-decoration-color: rgb(33,37,41);
   background-color: #f8f9fa;
 
   grid-gap: 20px;
