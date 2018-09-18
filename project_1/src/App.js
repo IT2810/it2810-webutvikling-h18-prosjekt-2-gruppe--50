@@ -52,17 +52,23 @@ function getRandomCombo(
   return getCombo(imageCategory, soundCategory, textCategory, imageIndex, soundIndex, textIndex)
 }
 
+
 class App extends Component {
   constructor () {
     super()
+    let image = "horse"
+    let sound = "classical"
+    let text = "lyric"
     this.state = {
       customCombo: getCombo('cat', 'classical', 'lyric', 0, 0, 0),
       showCustomCombo: true,
-      comboOne: getRandomCombo(),
-      comboTwo: getRandomCombo(),
-      comboThree: getRandomCombo(),
-      comboFour: getRandomCombo(),
-      activeNr: 1
+      comboOne: getCombo(image, sound, text, 0, 0, 0),
+      comboTwo: getCombo(image, sound, text, 1, 1, 1),
+      comboThree: getCombo(image, sound, text, 2, 2, 2),
+      comboFour: getCombo(image, sound, text, 3, 3, 3),
+      image,
+      sound,
+      text
     }
 
     this.updateCombinations = this.updateCombinations.bind(this)
@@ -76,13 +82,21 @@ class App extends Component {
     }
     this.setState({
       customCombo: getCombo(image, sound, text, customImageIndex, customSoundIndex, customTextIndex),
-      showCustomCombo: true
+      showCustomCombo: true,
+      image, sound, text
     })
 
   }
 
   showSelectedDisplay (nr) {
-    this.setState({ activeNr: nr, showCustomCombo: false })
+    this.setState({
+      activeNr: nr,
+      showCustomCombo: false,
+      comboOne: getCombo(this.state.image, this.state.sound, this.state.text, 0, 0, 0),
+      comboTwo: getCombo(this.state.image, this.state.sound, this.state.text, 1, 1, 1),
+      comboThree: getCombo(this.state.image, this.state.sound, this.state.text, 2, 2, 2),
+      comboFour: getCombo(this.state.image, this.state.sound, this.state.text, 3, 3, 3)
+    })
   }
 
   render () {

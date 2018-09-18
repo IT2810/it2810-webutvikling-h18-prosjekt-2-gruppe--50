@@ -23,7 +23,7 @@ class SelectMenu extends Component {
   constructor () {
     super()
     this.state = {
-      image: 'cat',
+      image: 'horse',
       sound: 'classical',
       text: 'lyric',
       customImageIndex: 0,
