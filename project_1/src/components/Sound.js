@@ -1,38 +1,29 @@
-import React, { Component } from 'react'; 
+import React, { Component } from 'react';
 import axios from 'axios'
 
 class Sound extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {
-      sound: null
-    }
-    this.getSound = this.getSound.bind(this)
+    this.state = {sound: null}
   }
 
-  componentDidMount () {
-    this.getSound(this.props.name)
+  componentWillMount() {
+    this.setState({sound: 'mp3/' + this.props.name + '.mp3'})
   }
 
-  componentWillReceiveProps (newProps) {
-    this.getSound(newProps.name)
-  }
-
-  getSound (name) {
-    if (name !== null && name !== '') {
-      axios.get('mp3/' + name + '.mp3')
-        .then(res => {
-          this.setState({sound: res.data})
-        })
-    }
+  componentWillReceiveProps(newProps) {
+    this.refs["audioTag"].pause()
+    this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
+    this.refs["audioTag"].load()
+    this.refs["audioTag"].play()
   }
 
   render() {
     return (
       <div className="Sound">
-        <audio controls>
-          <source src={'mp3/' + this.props.name + '.mp3'}></source>
+        <audio ref="audioTag" controls>
+          <source src={this.state.sound}></source>
           Your browser does not support the audio element.
         </audio>
       </div>
