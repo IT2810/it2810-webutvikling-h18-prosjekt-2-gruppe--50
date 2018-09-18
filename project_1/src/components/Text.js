@@ -1,18 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-const resourcesMap = {
-  "poem": ["ALegendOfTruth", "ANorthernLegend", "Legend", "TheLegendOfOneRedRose"],
-  "lyric": ["StairwayToHeaven", "ManInTheMirror", "Imagine", "BohemianRhapsody"],
-  "speech": ["DutiesOfAmericanCitizenship", "IHaveADream", "InaugurationAddress", "TheThirdPhilippic"]
-}
-
-const categoryNameMap = {
-  "Poem": "poem",
-  "Lyric": "lyric",
-  "Speech": "speech"
-}
-
 class Text extends Component {
   constructor (props) {
     super(props)
@@ -31,20 +19,17 @@ class Text extends Component {
   }
 
   componentWillMount() {
-    if (this.props.category !== null) {
-      this.getText(categoryNameMap[this.props.category])
-    }
+      this.getText(this.props.name)
   }
 
   componentWillReceiveProps (newProps) {
-    if (newProps.category !== null) {
-      this.getText(categoryNameMap[newProps.category])
-    }
+      this.getText(newProps.name)
   }
 
-  getText(category) {
-    if (category !== null && category !== '') {
-      axios.get('texts/' + resourcesMap[category][this.props.index] + '.json')
+  getText(name) {
+    console.log("name", name)
+    if (name !== null && name !== '') {
+      axios.get('texts/' + name + '.json')
         .then(res => {
           this.setState({data: res.data})
         })
@@ -54,11 +39,11 @@ class Text extends Component {
   render () {
     return (
 
-      <div>
+      <div className="Text">
         <h3><b>{this.state.data.title}</b></h3>
-        <pre>{this.state.data.text}</pre>
-        {(this.props.category === 'Poem' || this.props.category === 'Speech') && <div><i>by {this.state.data.author}</i></div>}
-        {this.props.category === 'Lyric' && <div>
+        <pre style={{maxWidth: '40vw', whiteSpace: 'pre-wrap'}}>{this.state.data.text}</pre>
+        {(this.state.data.author !== null) && <div><i>by {this.state.data.author}</i></div>}
+        {(this.state.data.artist !== null && this.state.data.writer !== null) && <div>
           <div><i>Artist: {this.state.data.artist}</i></div>
           <div><i>Writer: {this.state.data.writer}</i></div>
         </div>}

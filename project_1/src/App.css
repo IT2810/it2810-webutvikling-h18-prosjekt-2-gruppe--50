@@ -5,10 +5,18 @@
   --active-color: #2196f3;
 }
 
+html,
+body,
+.App,
+.container {
+  height: 100%;
+}
+
 .App {
   text-align: center;
   display: grid;
   font-family: 'Roboto Condensed', serif;
+  font-color: rgb(33, 37, 41);
   text-decoration-color: rgb(33,37,41);
   background-color: #f8f9fa;
 
@@ -46,9 +54,20 @@
 }
 
 .Display {
+  padding: 10px;
   grid-area: display;
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-auto-rows: 60px 500px;
+
+  grid-template-areas:
+      "svg textDiv"
+      "sound textDiv";
+
+  box-shadow: inset 0 0 5px 0 #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+
+  margin: 20px;
 }
 
 .SelectMenu {
@@ -72,6 +91,7 @@
 }
 
 .SVG {
+  grid-area: svg;
   width: 100%;
   height: 100%;
   padding: 16px;
@@ -116,10 +136,14 @@
 }
 
 .Sound {
-  width: 100%;
+  grid-area: sound;
+}
+
+.Sound audio {
 }
 
 .Text {
+  grid-area: textDiv;
 }
 
 .hidden {
@@ -167,7 +191,7 @@
   }
 
   .Display {
-
+    
   }
 
   .SelectMenu .dropdown, 
@@ -309,158 +333,4 @@ Custom radio buttons
   cursor: pointer;
 }
 
-/*Test for responsive design*/
-
-* {
-  box-sizing: border-box;
-}
-.row::after {
-  content: "";
-  clear: both;
-  display: block;
-}
-[class*="col-"] {
-  float: left;
-  padding: 15px;
-}
-html {
-  font-family: "Lucida Sans", sans-serif;
-}
-.header {
-  background-color: #9933cc;
-  color: #ffffff;
-  padding: 15px;
-}
-.menu ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-.menu li {
-  padding: 8px;
-  margin-bottom: 7px;
-  background-color: #33b5e5;
-  color: #ffffff;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.menu li:hover {
-  background-color: #0099cc;
-}
-.aside {
-  background-color: #33b5e5;
-  padding: 15px;
-  color: #ffffff;
-  text-align: center;
-  font-size: 14px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.footer {
-  background-color: #0099cc;
-  color: #ffffff;
-  text-align: center;
-  font-size: 12px;
-  padding: 15px;
-}
-/* For desktop: */
-.col-1 {width: 8.33%;}
-.col-2 {width: 16.66%;}
-.col-3 {width: 25%;}
-.col-4 {width: 33.33%;}
-.col-5 {width: 41.66%;}
-.col-6 {width: 50%;}
-.col-7 {width: 58.33%;}
-.col-8 {width: 66.66%;}
-.col-9 {width: 75%;}
-.col-10 {width: 83.33%;}
-.col-11 {width: 91.66%;}
-.col-12 {width: 100%;}
-
-@media only screen and (max-width: 768px) {
-  /* For mobile phones: */
-  [class*="col-"] {
-      width: 100%;
-  }
-}
-
-/*Test for custom radio buttons*/
-
-/* The container */
-.container_music, 
-.container_art, 
-.container_text {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-bottom: 12px;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-/* Hide the browser's default radio button */
-.container_music input, 
-.container_art input, 
-.container_text input {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-}
-
-/* Create a custom radio button */
-.checkmark_music, 
-.checkmark_art, 
-.checkmark_text{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-  border-radius: 50%;
-}
-
-/* On mouse-over, add a grey background color */
-.container_music:hover ~ .checkmark_music, 
-.container_art:hover ~ .checkmark_art, 
-.container_text:hover input ~ .checkmark_text {
-  background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.container_music input:checked ~ .checkmark_music, 
-.container_art input:checked ~ .checkmark_art, 
-.container_text input:checked ~ .checkmark_text {
-  background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark_art:after, 
-.checkmark_music:after, 
-.checkmark_text:after {
-  content: "";
-  position: absolute;
-  display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.container_music input:checked ~ .checkmark_music:after, 
-.container_art input:checked ~ .checkmark_art:after, 
-.container_text input:checked ~ .checkmark_text:after {
-  display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.container_music .checkmark_music:after, 
-.container_art .checkmark_art:after, 
-.container_text .checkmark_text:after {
-top: 9px;
-left: 9px;
-width: 8px;
-height: 8px;
-border-radius: 50%;
-background: white;
-}
 
