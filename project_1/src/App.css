@@ -57,8 +57,6 @@ body,
   padding: 10px;
   grid-area: display;
   display: grid;
-  /*display: flex;
-  flex-direction: row;*/
   grid-auto-rows: 60px 500px;
 
   grid-template-areas:
