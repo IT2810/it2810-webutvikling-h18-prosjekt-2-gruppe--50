@@ -7,25 +7,20 @@ class Sound extends Component {
     super(props)
     this.state = {
       sound: null,
-      creditsMusic: null
+      credits: null
     }
-    this.getSoundCredits = this.getSoundCredits.bind(this)
+    this.getCredits = this.getCredits.bind(this)
   }
 
   componentWillMount() {
     this.setState({sound: 'mp3/' + this.props.name + '.mp3'})
   }
 
-  getSoundCredits (name) {
+  getCredits (name) {
     if (name !== null && name !== '') {
-      axios.get('mp3/' + name + '.mp3')
-        .then(res => {
-          this.setState({sound: res.data})
-        })
-
         axios.get('mp3/credits.json')
         .then(res => {
-          this.setState({creditsMusic: res.data[name]})
+          this.setState({credits: res.data[name]})
         })
     }
   }
@@ -35,23 +30,23 @@ class Sound extends Component {
     this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
     this.refs["audioTag"].load()
     this.refs["audioTag"].play()
-    this.getSoundCredits(newProps.name)
+    this.getCredits(newProps.name)
   }
 
   render() {
-    let credits;
+    let creds;
 
     if (this.state.sound) {
-      credits = <p>{this.state.creditsMusic}</p>
+      creds = <p>{this.state.credits}</p>
     }
 
     return (
       <div className="Sound">
+      {creds}
         <audio ref="audioTag" controls>
           <source src={this.state.sound}></source>
           Your browser does not support the audio element.
         </audio>
-        {credits}
       </div>
     )
   }

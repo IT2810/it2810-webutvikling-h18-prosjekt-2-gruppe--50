@@ -65,15 +65,6 @@ class App extends Component {
     this.setState({customCombo: getCombo(image, sound, text), showCustomCombo: true})
   }
 
-  createCombo (image, sound, text) {
-    return {image: image + this.randomNum(), sound: sound + this.randomNum(), text: null}
-  }
-
-  randomNum () {
-    let num = Math.floor(1 + Math.random() * 4)
-    return num
-  }
-
   showSelectedDisplay (nr) {
     this.setState({ activeNr: nr, showCustomCombo: false })
   }
