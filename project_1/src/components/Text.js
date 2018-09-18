@@ -39,7 +39,7 @@ class Text extends Component {
   render () {
     return (
 
-      <div>
+      <div className="Text">
         <h3><b>{this.state.data.title}</b></h3>
         <pre style={{maxWidth: '40vw', whiteSpace: 'pre-wrap'}}>{this.state.data.text}</pre>
         {(this.state.data.author !== null) && <div><i>by {this.state.data.author}</i></div>}
