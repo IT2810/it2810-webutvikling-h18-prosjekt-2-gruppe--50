@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import axios from 'axios'
+import React, { Component } from 'react'
 
 class Sound extends Component {
 
@@ -26,9 +25,9 @@ class Sound extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.name !== this.props.name) {
+    if (newProps.name !== this.props.name || !this.state.hasInitted) {
       this.refs["audioTag"].pause()
-      this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
+      this.setState({sound: 'mp3/' + newProps.name + '.mp3', hasInitted: true})
       this.refs["audioTag"].load()
       this.refs["audioTag"].play()
       this.getCredits(newProps.name)

@@ -34,14 +34,20 @@ class SelectMenu extends Component {
     this.onSelectDrop = this.onSelectDrop.bind(this)
   }
 
+  componentDidMount() {
+    //this.refs["image0"].selectedIndex = 0
+    //this.refs["sound0"].selectedIndex = 0
+    //this.refs["text0"].selectedIndex = 0
+  }
+
   onSelect(type, name, index) {
    let updatedState
-   if (type == "image") {
+   if (type === "image") {
      updatedState = {
        image: svgKeys[name],
        customImageIndex: index
      }
-   } else if (type == "sound") {
+   } else if (type === "sound") {
      updatedState = {
        sound: soundKeys[name],
        customSoundIndex: index
@@ -70,11 +76,11 @@ class SelectMenu extends Component {
       <div className="SelectMenu">
         <div className="radio-menu">
           <h4>Images</h4>
-          {imageOptions.map((image, i) => (<Select key={i} name={image} type="image" onSelect={e => this.onSelect(e, image, i)} />))}
+          {imageOptions.map((image, i) => (<Select key={i} checked={i === this.state.customImageIndex} name={image} type="image" onSelect={e => this.onSelect(e, image, i)} />))}
           <h4>Sounds</h4>
-          {soundOptions.map((sound, i) => (<Select key={i} name={sound} type="sound" onSelect={e => this.onSelect(e, sound, i)} />))}
+          {soundOptions.map((sound, i) => (<Select key={i} checked={i === this.state.customSoundIndex} name={sound} type="sound" onSelect={e => this.onSelect(e, sound, i)} />))}
           <h4>Texts</h4>
-          {textOptions.map((text, i) => (<Select key={i} name={text} type="text" onSelect={e => this.onSelect(e, text, i)} />))}
+          {textOptions.map((text, i) => (<Select key={i} checked={i === this.state.customTextIndex} name={text} type="text" onSelect={e => this.onSelect(e, text, i)} />))}
         </div>
 
 
@@ -82,19 +88,19 @@ class SelectMenu extends Component {
           <div className="dropdown">
             <p>Images</p>
             <select onChange={this.onSelectDrop} name="image">
-              {imageOptions.map((image, i) => <option key={i} index={i} value={image} name="image">{image}</option>)}
+              {imageOptions.map((image, i) => <option key={i} value={image} name="image">{image}</option>)}
             </select>
           </div>
           <div className="dropdown">
             <p>Sounds</p>
             <select onChange={this.onSelectDrop} name="sound">
-              {soundOptions.map((sound, i) => <option key={i} index={i} value={sound}>{sound}</option>)}
+              {soundOptions.map((sound, i) => <option key={i} value={sound}>{sound}</option>)}
             </select>
           </div>
           <div className="dropdown">
             <p>Texts</p>
-            <select  onChange={this.onSelectDrop} name="text">
-              {textOptions.map((text, i) => <option  key={i} index={i} value={text}>{text}</option>)}
+            <select onChange={this.onSelectDrop} name="text">
+              {textOptions.map((text, i) => <option  key={i} value={text}>{text}</option>)}
             </select>
           </div>
         </div>
