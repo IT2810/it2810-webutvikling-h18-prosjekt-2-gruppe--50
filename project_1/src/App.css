@@ -57,17 +57,16 @@ body,
   padding: 10px;
   grid-area: display;
   display: grid;
-  grid-auto-rows: 60px 500px;
-
+  
   grid-template-areas:
-      "svg textDiv"
-      "sound textDiv";
-
+        "svg sound"
+        "textDiv textDiv";
+  
   box-shadow: inset 0 0 5px 0 #ccc;
   border-radius: 4px;
   overflow: hidden;
 
-  margin: 20px;
+  margin: 16px;
 }
 
 .SelectMenu {
@@ -107,13 +106,26 @@ body,
 .Tabs {
   grid-area: tabs;
   display: flex;
+  margin-left: 16px;
+}
+
+.Tabs > div {
+  display: flex;
+}
+
+.media.small {
+  display: none;
+}
+
+.media.large {
+  display: inline-block;
 }
 
 .Tab {
   display: inline-block;
 }
 
-.Tab button {
+.Tab {
   background-color: var(--primary-color);
   border: purple;
   border-width: 2px;
@@ -126,14 +138,15 @@ body,
   width: 100%;
 }
 
-.Tab .button:hover {
+.Tab:hover {
   background-color: var(--active-color);
   cursor: pointer;
 }
 
-.Tab.active .button {
+.Tab.active {
   background-color: var(--active-color);
 }
+
 
 .Sound {
   grid-area: sound;
@@ -144,6 +157,14 @@ body,
 
 .Text {
   grid-area: textDiv;
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
+.Text pre {
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  /*word-wrap: break-word;*/
 }
 
 .hidden {
@@ -191,7 +212,13 @@ body,
   }
 
   .Display {
+    display: flex;
+    flex-direction: column;
     
+  }
+
+  .Text {
+    width: 100%;
   }
 
   .SelectMenu .dropdown, 
@@ -224,8 +251,16 @@ body,
     margin: 8px 0px;
   }
 
-  .Tabs > div {
+  .Tabs > button {
     width: 80%;
+  }
+
+  .media.small {
+    display: inline-block;
+  }
+
+  .media.large {
+    display: none;
   }
 
   .Tab {
@@ -308,29 +343,4 @@ Custom radio buttons
   border-radius: 50%;
   background: white;
 }
-
-.svg_div {
-  width: 100%;
-  height: 400px;
-  background-image: url('logo.svg');
-}
-
-.button {
-  background-color: #33b5e5;
-  border: purple;
-  border-width: 2px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #0099cc;
-  cursor: pointer;
-}
-
 
