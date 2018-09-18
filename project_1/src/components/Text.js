@@ -42,21 +42,15 @@ class Text extends Component {
 
     if (this.state.data.text) {
       console.log('Text')
-      // console.log(this.state.data.text)
       var lines = this.state.data.text.split('\n')
-      console.log(lines)
       let numLines = lines.length
-      console.log(numLines)
-      console.log(numLines / 2)
+      if (lines == 1) {
+        lines = this.state.data.text.split('. ')
+      }
       let splitAt = Math.floor(numLines / 2)
-      console.log(splitAt)
       firstHalf = lines.slice(0, splitAt)
-      console.log('firstHalf')
-      console.log(firstHalf)
-      console.log(lines)
       secondHalf = lines.slice(splitAt + 1, numLines)
-      console.log('secondHalf')
-      console.log(secondHalf)
+
       firstHalf = firstHalf.join('\n')
       secondHalf = secondHalf.join('\n')
     }
