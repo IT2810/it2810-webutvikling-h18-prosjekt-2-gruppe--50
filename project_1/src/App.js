@@ -63,7 +63,6 @@ class App extends Component {
       sound = sound.toLowerCase()
     }
     this.setState({customCombo: getCombo(image, sound, text), showCustomCombo: true})
-
   }
 
   showSelectedDisplay (nr) {
