@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
 
-import {FaCheckSquare, FaSquare} from 'react-icons/fa'
-
 class Select extends Component {
   constructor (props) {
     super(props)

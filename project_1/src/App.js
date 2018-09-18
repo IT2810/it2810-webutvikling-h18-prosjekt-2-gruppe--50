@@ -15,11 +15,18 @@ const svgMap = {
   "dog": ["dog1", "dog2", "dog3", "dog4"],
   "cat": ["cat1", "cat2", "cat3", "cat4"]
 }
-const soundMap = {
+/*const soundMap = {
   "classical": ["Chopin-fantasie-impromptu", "Edvard-grieg-morning-mood", "Requiem-piano-mozart-lacrymosa", "Traumerei-piano-music"],
   "hiphop": ["254Beats-FREE-Young-Thug-Type-BeatHip-Hop-Rap-BeatInstrumentalEmotional-Rap-Type-Beat-2017-Damn-It", "Ghetto-Ambassador-silence-no-more", "RMR-BEATS-Emotional-rap-trap-beat", "Sketcha-Kingpin-Lamba-lolo-addicter-2-freestyle"],
   "nature": ["1-minute-pouring-rain-sound-effect", "Large-thunder-rumble", "Magic-forest", "Sounds-of-nature"]
-}
+}*/
+
+
+  const soundMap = {
+    "classical": ["Classic1", "Classic2", "Classic3", "Classic4"],
+    "hiphop": ["HipHop1", "HipHop2", "HipHop3", "HipHop4"],
+    "nature": ["Nature1", "Nature2", "Nature3", "Nature4"]
+  }
 
 function getCombo(
   imageCategory = Object.keys(svgMap)[Math.floor(Math.random() * 3)],
