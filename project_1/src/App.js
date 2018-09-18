@@ -83,7 +83,6 @@ class App extends Component {
           <SelectMenu onSelect={this.updateCombinations} />
           <Tabs onSelect={this.showSelectedDisplay} />
           <Display combo={currentCombo} />
-
         </div>
 
       </div>

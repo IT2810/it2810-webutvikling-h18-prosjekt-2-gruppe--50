@@ -5,9 +5,7 @@ import Text from './Text.js'
 import Sound from './Sound.js'
 
 const Display = ({combo}) => {
-    consol
-  if (combo == null) return <div />e.log("Combo")
-    console.log(combo)
+  if (combo == null) return <div />
   return (
     <div className='Display'>
       <SVG name={combo.image} />

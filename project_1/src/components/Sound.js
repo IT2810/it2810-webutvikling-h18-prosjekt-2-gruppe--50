@@ -20,7 +20,6 @@ class Sound extends Component {
   }
 
   getSound (name) {
-    console.log("Getting sound")
     if (name !== null && name !== '') {
       axios.get('mp3/' + name + '.mp3')
         .then(res => {
@@ -31,10 +30,12 @@ class Sound extends Component {
 
   render() {
     return (
-      <audio controls>
-        <source src={'mp3/' + this.props.name + '.mp3'}></source>
-        Your browser does not support the audio element.
-      </audio>
+      <div className="Sound">
+        <audio controls>
+          <source src={'mp3/' + this.props.name + '.mp3'}></source>
+          Your browser does not support the audio element.
+        </audio>
+      </div>
     )
   }
 }
