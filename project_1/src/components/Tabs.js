@@ -17,7 +17,7 @@ class Tabs extends Component {
     this.props.onSelect(combo)
   }
 
-  createTabs() {
+  createTabs () {
     let tabs = []
     for (let i = 1; i < 5; i++) {
       let active = this.state.activeNr === i
@@ -30,10 +30,10 @@ class Tabs extends Component {
 
   render () {
     var tabs = this.createTabs()
-  
+
     return (
       <div className='Tabs row'>
-        <p> Combo </p>
+        <p className='media small'> Combo </p>
         <div>
           { tabs }
         </div>
