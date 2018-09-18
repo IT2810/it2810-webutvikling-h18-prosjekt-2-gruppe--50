@@ -5,64 +5,65 @@ import SelectMenu from './components/SelectMenu'
 import Display from './components/Display'
 import Tabs from './components/Tabs'
 
+const resourcesMap = {
+  "poem": ["ALegendOfTruth", "ANorthernLegend", "Legend", "TheLegendOfOneRedRose"],
+  "lyric": ["StairwayToHeaven", "ManInTheMirror", "Imagine", "BohemianRhapsody"],
+  "speech": ["DutiesOfAmericanCitizenship", "IHaveADream", "InaugurationAddress", "TheThirdPhilippic"]
+}
+const svgMap = {
+  "horse": ["horse1", "horse2", "horse3", "horse4"],
+  "dog": ["dog1", "dog2", "dog3", "dog4"],
+  "cat": ["cat1", "cat2", "cat3", "cat4"]
+}
+const soundMap = {
+  "classical": ["Chopin-fantasie-impromptu", "Edvard-grieg-morning-mood", "Requiem-piano-mozart-lacrymosa", "Traumerei-piano-music"],
+  "hiphop": ["254Beats-FREE-Young-Thug-Type-BeatHip-Hop-Rap-BeatInstrumentalEmotional-Rap-Type-Beat-2017-Damn-It", "Ghetto-Ambassador-silence-no-more", "RMR-BEATS-Emotional-rap-trap-beat", "Sketcha-Kingpin-Lamba-lolo-addicter-2-freestyle"],
+  "nature": ["1-minute-pouring-rain-sound-effect", "Large-thunder-rumble", "Magic-forest", "Sounds-of-nature"]
+}
+
+function getCombo(
+  imageCategory = Object.keys(svgMap)[Math.floor(Math.random() * 3)],
+  soundCategory = Object.keys(soundMap)[Math.floor(Math.random() * 3)],
+  textCategory = Object.keys(resourcesMap)[Math.floor(Math.random() * 3)]
+) {
+  return {
+    image: svgMap[imageCategory][Math.floor(Math.random() * 4)],
+    sound: soundMap[soundCategory][Math.floor(Math.random() * 4)],
+    text: resourcesMap[textCategory][Math.floor(Math.random() * 4)]
+  }
+}
+
 class App extends Component {
   constructor () {
     super()
     this.state = {
-      imageCategory: null,
-      textCategory: null,
-      soundCategory: null,
-      comboOne: null,
-      comboTwo: null,
-      comboThree: null,
-      comboFour: null,
-      activeNr: 2
+      customCombo: getCombo('cat', 'classical', 'lyric'),
+      showCustomCombo: true,
+      comboOne: getCombo(),
+      comboTwo: getCombo(),
+      comboThree: getCombo(),
+      comboFour: getCombo(),
+      activeNr: 1
     }
 
     this.updateCombinations = this.updateCombinations.bind(this)
     this.showSelectedDisplay = this.showSelectedDisplay.bind(this)
-    this.randomNum = this.randomNum.bind(this)
-
-    this.displayOne = React.createRef()
-    this.displayTwo = React.createRef()
-    this.displayThree = React.createRef()
-    this.displayFour = React.createRef()
   }
 
   updateCombinations (image, sound, text) {
     if (image !== null) {
       image = image.toLowerCase()
     }
-    this.setState({
-      imageCategory: image,
-      soundCategory: sound,
-      textCategory: text
-    })
-
-    this.setState({
-      comboOne: this.createCombo(image, sound, text),
-      comboTwo: this.createCombo(image, sound, text),
-      comboThree: this.createCombo(image, sound, text),
-      comboFour: this.createCombo(image, sound, text)
-    })
-  }
-
-  createCombo (image, sound, text) {
-    return {image: image + this.randomNum(), sound: null, text: null}
-  }
-
-  randomNum () {
-    let num = Math.floor(1 + Math.random() * 4)
-    return num
+    this.setState({customCombo: getCombo(image, sound, text), showCustomCombo: true})
   }
 
   showSelectedDisplay (nr) {
-    this.setState({
-      activeNr: nr
-    })
+    this.setState({ activeNr: nr, showCustomCombo: false })
   }
 
   render () {
+    const combos = [this.state.comboOne, this.state.comboTwo, this.state.comboThree, this.state.comboFour]
+    const currentCombo = this.state.showCustomCombo ? this.state.customCombo : combos[this.state.activeNr-1]
     return (
       <div className='App'>
         <header className='App-header'>
@@ -72,10 +73,7 @@ class App extends Component {
         <div className='container'>
           <SelectMenu onSelect={this.updateCombinations} />
           <Tabs onSelect={this.showSelectedDisplay} />
-          <Display ref={this.displayOne} combo={this.state.comboOne} active={this.state.activeNr === 1} />
-          <Display ref={this.displayTwo} combo={this.state.comboTwo} active={this.state.activeNr === 2} />
-          <Display ref={this.displayThree} combo={this.state.comboThree} active={this.state.activeNr === 3} />
-          <Display ref={this.displayFour} combo={this.state.comboFour} active={this.state.activeNr === 4} />
+          <Display combo={currentCombo} />
 
         </div>
 
