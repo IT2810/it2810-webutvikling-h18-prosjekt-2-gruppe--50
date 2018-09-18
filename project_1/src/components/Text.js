@@ -27,7 +27,6 @@ class Text extends Component {
   }
 
   getText (name) {
-    console.log('name', name)
     if (name !== null && name !== '') {
       axios.get('texts/' + name + '.json')
         .then(res => {
@@ -37,12 +36,11 @@ class Text extends Component {
   }
 
   render () {
-    var firstHalf
-    var secondHalf
+    let firstHalf
+    let secondHalf
 
     if (this.state.data.text) {
-      console.log('Text')
-      var lines = this.state.data.text.split('\n')
+      let lines = this.state.data.text.split('\n')
       let numLines = lines.length
       if (lines == 1) {
         lines = this.state.data.text.split('. ')
@@ -63,13 +61,12 @@ class Text extends Component {
         </div>
         <div>
           <pre>{secondHalf}</pre>
-          {(this.state.data.author !== null) && <div><i>by {this.state.data.author}</i></div>}
-          {(this.state.data.artist !== null && this.state.data.writer !== null) && <div>
+          {(this.state.data.hasOwnProperty('author')) && <div><i>by {this.state.data.author}</i></div>}
+          {(this.state.data.hasOwnProperty('artist') && this.state.data.hasOwnProperty('writer')) && <div>
             <div><i>Artist: {this.state.data.artist}</i></div>
             <div><i>Writer: {this.state.data.writer}</i></div>
           </div>}
         </div>
-
       </div>
     )
   }

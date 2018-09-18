@@ -26,11 +26,13 @@ class Sound extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    this.refs["audioTag"].pause()
-    this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
-    this.refs["audioTag"].load()
-    this.refs["audioTag"].play()
-    this.getCredits(newProps.name)
+    if (newProps.name !== this.props.name) {
+      this.refs["audioTag"].pause()
+      this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
+      this.refs["audioTag"].load()
+      this.refs["audioTag"].play()
+      this.getCredits(newProps.name)
+    }
   }
 
   render() {
