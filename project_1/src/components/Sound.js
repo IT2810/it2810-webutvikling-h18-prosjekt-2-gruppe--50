@@ -5,7 +5,20 @@ class Sound extends Component {
 
   constructor (props) {
     super(props)
-    this.state = {sound: null}
+    this.state = {
+      sound: null,
+      credits: null
+    }
+    this.getCredits = this.getCredits.bind(this)
+  }
+
+  getCredits (name) {
+    if (name !== null && name !== '') {
+        axios.get('mp3/credits.json')
+        .then(res => {
+          this.setState({credits: res.data[name]})
+        })
+    }
   }
 
   componentWillMount() {
@@ -17,11 +30,18 @@ class Sound extends Component {
     this.setState({sound: 'mp3/' + newProps.name + '.mp3'})
     this.refs["audioTag"].load()
     this.refs["audioTag"].play()
+    this.getCredits(newProps.name)
   }
 
   render() {
+    let creds;
+    if (this.state.sound) {
+      creds = <p>{this.state.credits}</p>
+    }
+
     return (
       <div className="Sound">
+        {creds}
         <audio ref="audioTag" controls>
           <source src={this.state.sound}></source>
           Your browser does not support the audio element.
