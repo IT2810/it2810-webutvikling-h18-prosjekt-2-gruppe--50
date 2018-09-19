@@ -42,7 +42,7 @@ class Text extends Component {
     if (this.state.data.text) {
       let lines = this.state.data.text.split('\n')
       let numLines = lines.length
-      if (lines == 1) {
+      if (lines === 1) {
         lines = this.state.data.text.split('. ')
       }
       let splitAt = Math.floor(numLines / 2)

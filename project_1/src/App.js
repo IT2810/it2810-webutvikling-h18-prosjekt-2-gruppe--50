@@ -22,38 +22,29 @@ const soundMap = {
   "nature": ["Nature1", "Nature2", "Nature3", "Nature4"]
 }
 
-function getCombo(imageCategory, soundCategory, textCategory, imageIndex, soundIndex, textIndex) {
+function getCombo(imageCategory, soundCategory, textCategory, comboIndex) {
   return {
-    image: svgMap[imageCategory][imageIndex],
-    sound: soundMap[soundCategory][soundIndex],
-    text: resourcesMap[textCategory][textIndex]
+    image: svgMap[imageCategory][comboIndex],
+    sound: soundMap[soundCategory][comboIndex],
+    text: resourcesMap[textCategory][comboIndex]
   }
 }
 
-function getRandomCombo(
-  imageCategory = Object.keys(svgMap)[Math.floor(Math.random() * 3)],
-  soundCategory = Object.keys(soundMap)[Math.floor(Math.random() * 3)],
-  textCategory = Object.keys(resourcesMap)[Math.floor(Math.random() * 3)],
-  imageIndex = Math.floor(Math.random() * 4),
-  soundIndex = Math.floor(Math.random() * 4),
-  textIndex = Math.floor(Math.random() * 4)
-) {
-  return getCombo(imageCategory, soundCategory, textCategory, imageIndex, soundIndex, textIndex)
-}
-
 function getCombos (image, sound, text) {
-  return [0, 1, 2, 3].map(i => getCombo(image, sound, text, i, i, i))
+  return [0, 1, 2, 3].map(i => getCombo(image, sound, text, i))
 }
 
 class App extends Component {
   constructor () {
     super()
-    let image = Object.keys(svgMap)[0]
-    let sound = Object.keys(soundMap)[0]
-    let text = Object.keys(resourcesMap)[0]
+    let activeNr = 1
+    let image = Object.keys(svgMap)[activeNr]
+    let sound = Object.keys(soundMap)[activeNr]
+    let text = Object.keys(resourcesMap)[activeNr]
     this.state = {
-      customCombo: getCombo(image, sound, text, 0, 0, 0),
+      customCombo: getCombo(image, sound, text, activeNr),
       showCustomCombo: true,
+      activeNr,
       combos: getCombos(image, sound, text),
       image,
       sound,
@@ -64,13 +55,13 @@ class App extends Component {
     this.showSelectedDisplay = this.showSelectedDisplay.bind(this)
   }
 
-  updateCombinations (image, sound, text, customImageIndex, customSoundIndex, customTextIndex) {
+  updateCombinations (image, sound, text) {
     if (image !== null) {
       image = image.toLowerCase()
       sound = sound.toLowerCase()
     }
     this.setState({
-      customCombo: getCombo(image, sound, text, customImageIndex, customSoundIndex, customTextIndex),
+      customCombo: getCombo(image, sound, text, this.state.activeNr-1),
       showCustomCombo: true,
       image, sound, text
     })

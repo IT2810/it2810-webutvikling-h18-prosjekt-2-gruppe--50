@@ -53,7 +53,7 @@ class SelectMenu extends Component {
      }
    }
     this.setState(updatedState, () => {
-      this.props.onSelect(this.state.image, this.state.sound, this.state.text, this.state.customImageIndex, this.state.customSoundIndex, this.state.customTextIndex)
+      this.props.onSelect(this.state.image, this.state.sound, this.state.text)
     })
   }
 

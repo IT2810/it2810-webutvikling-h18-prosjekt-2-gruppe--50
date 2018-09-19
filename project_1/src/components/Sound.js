@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import axios from 'axios'
 
 class Sound extends Component {
 
@@ -13,8 +14,7 @@ class Sound extends Component {
 
   getCredits (name) {
     if (name !== null && name !== '') {
-        axios.get('mp3/credits.json')
-        .then(res => {
+        axios.get('mp3/credits.json').then(res => {
           this.setState({credits: res.data[name]})
         })
     }
