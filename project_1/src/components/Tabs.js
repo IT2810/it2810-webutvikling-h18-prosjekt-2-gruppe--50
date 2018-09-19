@@ -32,7 +32,7 @@ class Tabs extends Component {
     var tabs = this.createTabs()
 
     return (
-      <div className='Tabs row'>
+      <div className='Tabs'>
         <p className='media small'> Combo </p>
         <div>
           { tabs }
