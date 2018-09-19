@@ -86,11 +86,6 @@ class App extends Component {
   }
 
   render () {
-<<<<<<< HEAD
-    const combos = [this.state.comboOne, this.state.comboTwo, this.state.comboThree, this.state.comboFour]
-    const currentCombo = this.state.showCustomCombo ? this.state.customCombo : combos[this.state.activeNr - 1]
-=======
->>>>>>> Code prettifications
     return (
       <div className='App'>
         <header>
