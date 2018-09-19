@@ -84,7 +84,7 @@ class App extends Component {
         </div>
 
         <footer>
-          <p> IT2810 Webteknologi Authumn 2018, project 2 group 50 </p>
+          <h4> IT2810 Webdevelopment Autumn 2018 - Project 2, group 50 </h4>
         </footer>
 
       </div>

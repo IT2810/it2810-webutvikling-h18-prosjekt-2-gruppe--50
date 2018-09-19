@@ -37,24 +37,26 @@ footer {
   grid-area: footer;
 }
 
+footer h4 {
+  margin: 8px 16px;
+}
+
 header,
 footer {
   background-color: #8CFFBE;
   color: #3D3D41;
 }
 
-
 .container {
   display: grid;
-  width: 1200px;
   margin: 0 auto;
 
   grid-area: container;
-  grid-template-columns: 40% 40% 20%;
+  grid-template-columns: 80% 20%;
 
   grid-template-areas:
-    "tabs tabs tabs"
-    "display display selectMenu";
+    "tabs tabs"
+    "display selectMenu";
 
 }
 
@@ -80,6 +82,7 @@ footer {
 
 .SelectMenu {
   grid-area: selectMenu;
+  
 }
 
 .Select {
@@ -92,10 +95,16 @@ footer {
 
 .SelectMenu .dropdown-menu {
   display: none;
+  margin: 16px;
+}
+
+.SelectMenu .dropdown-menu select {
+  margin: 8px;
 }
 
 .SelectMenu .radio-menu {
   display: block;
+  margin: 16px;
 }
 
 .SelectMenu .radio-menu h3 {
@@ -126,6 +135,7 @@ footer {
 
 .Tabs > div {
   display: flex;
+  width: 80%;
 }
 
 .media.small {
@@ -138,6 +148,7 @@ footer {
 
 .Tab {
   display: inline-block;
+
 }
 
 .Tab {
@@ -150,8 +161,10 @@ footer {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  width: 100%;
   margin: 8px;
+  width: 100%;
+
+
   border-radius: var(--border-radius);
 }
 
@@ -168,7 +181,6 @@ footer {
   background-color: var(--active-color);
 }
 
-
 .Sound {
   grid-area: sound;
   grid-column: 2;
@@ -176,6 +188,8 @@ footer {
 }
 
 .Sound audio {
+  width: 80%;
+  margin: 0 16px;
 }
 
 .Text {
@@ -202,7 +216,6 @@ a {
 }
 
 
-
 /*Test for responsive design*/
 
 * {
@@ -213,14 +226,31 @@ a {
   clear: both;
   display: block;
 }
+
 [class*="col-"] {
   float: left;
-  padding: 15px;
+  padding: 16px;
 }
 
 
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  
+  .container {
+    grid-template-columns: 70% 30%;
+  }
+
+  .Display {
+    display: flex;
+    flex-direction: column;
+
+    grid-template-columns: 100%;
+    grid-template-columns: auto auto;
+  }
+}
+
+/* For mobile phones */
 @media only screen and (max-width: 768px) {
-  /* For mobile phones: */
   [class*="col-"] {
     width: 25%;
     padding: 0 5px;
@@ -232,7 +262,7 @@ a {
 
   .container {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 16px;
     grid-template-areas:
       "selectMenu"
       "tabs"
@@ -245,8 +275,7 @@ a {
   .Display {
     display: flex;
     flex-direction: column;
-
-
+    grid-template-columns: 100%
   }
 
   .Text {
@@ -258,6 +287,9 @@ a {
   .SelectMenu .dropdown, 
   .Tabs {
     display: flex;
+  }
+
+  .Tabs {
     margin: 0 16px;
   }
 
@@ -303,9 +335,28 @@ a {
   }
 }
 
-/**
-Custom radio buttons
-**/
+/* For small phones */
+@media only screen and (max-width: 425px) {
+
+  
+  .Tabs div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .SelectMenu .dropdown-menu .dropdown select {
+    padding-right: 0px;
+    width: 80%;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .SelectMenu .dropdown-menu .dropdown select span {
+    margin-left: -5px;
+  }
+}
+/* Custom radio buttons */
 
 /* The container */
 .Select .radio-select {
