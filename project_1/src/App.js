@@ -15,23 +15,12 @@ const svgMap = {
   'dog': ['dog1', 'dog2', 'dog3', 'dog4'],
   'cat': ['cat1', 'cat2', 'cat3', 'cat4']
 }
-/* const soundMap = {
-  "classical": ["Chopin-fantasie-impromptu", "Edvard-grieg-morning-mood", "Requiem-piano-mozart-lacrymosa", "Traumerei-piano-music"],
-  "hiphop": ["254Beats-FREE-Young-Thug-Type-BeatHip-Hop-Rap-BeatInstrumentalEmotional-Rap-Type-Beat-2017-Damn-It", "Ghetto-Ambassador-silence-no-more", "RMR-BEATS-Emotional-rap-trap-beat", "Sketcha-Kingpin-Lamba-lolo-addicter-2-freestyle"],
-  "nature": ["1-minute-pouring-rain-sound-effect", "Large-thunder-rumble", "Magic-forest", "Sounds-of-nature"]
-} */
 
 const soundMap = {
-  'classical': ['Classic1', 'Classic2', 'Classic3', 'Classic4'],
-  'hiphop': ['HipHop1', 'HipHop2', 'HipHop3', 'HipHop4'],
-  'nature': ['Nature1', 'Nature2', 'Nature3', 'Nature4']
+  "classical": ["Classic1", "Classic2", "Classic3", "Classic4"],
+  "hiphop": ["HipHop1", "HipHop2", "HipHop3", "HipHop4"],
+  "nature": ["Nature1", "Nature2", "Nature3", "Nature4"]
 }
-
-  const soundMap = {
-    "classical": ["Classic1", "Classic2", "Classic3", "Classic4"],
-    "hiphop": ["HipHop1", "HipHop2", "HipHop3", "HipHop4"],
-    "nature": ["Nature1", "Nature2", "Nature3", "Nature4"]
-  }
 
 function getCombo(imageCategory, soundCategory, textCategory, imageIndex, soundIndex, textIndex) {
   return {
@@ -52,20 +41,20 @@ function getRandomCombo(
   return getCombo(imageCategory, soundCategory, textCategory, imageIndex, soundIndex, textIndex)
 }
 
+function getCombos (image, sound, text) {
+  return [0, 1, 2, 3].map(i => getCombo(image, sound, text, i, i, i))
+}
 
 class App extends Component {
   constructor () {
     super()
-    let image = "horse"
-    let sound = "classical"
-    let text = "lyric"
+    let image = Object.keys(svgMap)[0]
+    let sound = Object.keys(soundMap)[0]
+    let text = Object.keys(resourcesMap)[0]
     this.state = {
-      customCombo: getCombo('cat', 'classical', 'lyric', 0, 0, 0),
+      customCombo: getCombo(image, sound, text, 0, 0, 0),
       showCustomCombo: true,
-      comboOne: getCombo(image, sound, text, 0, 0, 0),
-      comboTwo: getCombo(image, sound, text, 1, 1, 1),
-      comboThree: getCombo(image, sound, text, 2, 2, 2),
-      comboFour: getCombo(image, sound, text, 3, 3, 3),
+      combos: getCombos(image, sound, text),
       image,
       sound,
       text
@@ -92,16 +81,16 @@ class App extends Component {
     this.setState({
       activeNr: nr,
       showCustomCombo: false,
-      comboOne: getCombo(this.state.image, this.state.sound, this.state.text, 0, 0, 0),
-      comboTwo: getCombo(this.state.image, this.state.sound, this.state.text, 1, 1, 1),
-      comboThree: getCombo(this.state.image, this.state.sound, this.state.text, 2, 2, 2),
-      comboFour: getCombo(this.state.image, this.state.sound, this.state.text, 3, 3, 3)
+      combos: getCombos(this.state.image, this.state.sound, this.state.text)
     })
   }
 
   render () {
+<<<<<<< HEAD
     const combos = [this.state.comboOne, this.state.comboTwo, this.state.comboThree, this.state.comboFour]
     const currentCombo = this.state.showCustomCombo ? this.state.customCombo : combos[this.state.activeNr - 1]
+=======
+>>>>>>> Code prettifications
     return (
       <div className='App'>
         <header>
@@ -111,7 +100,7 @@ class App extends Component {
         <div className='container'>
           <SelectMenu onSelect={this.updateCombinations} />
           <Tabs onSelect={this.showSelectedDisplay} />
-          <Display combo={currentCombo} />
+          <Display combo={this.state.showCustomCombo ? this.state.customCombo : this.state.combos[this.state.activeNr-1]} />
         </div>
 
         <footer>

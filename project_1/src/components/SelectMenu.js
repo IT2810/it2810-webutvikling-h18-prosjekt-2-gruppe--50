@@ -34,12 +34,6 @@ class SelectMenu extends Component {
     this.onSelectDrop = this.onSelectDrop.bind(this)
   }
 
-  componentDidMount() {
-    //this.refs["image0"].selectedIndex = 0
-    //this.refs["sound0"].selectedIndex = 0
-    //this.refs["text0"].selectedIndex = 0
-  }
-
   onSelect(type, name, index) {
    let updatedState
    if (type === "image") {

@@ -26,7 +26,11 @@ class Text extends Component {
     this.getText(newProps.name)
   }
 
+<<<<<<< HEAD
   getText (name) {
+=======
+  getText(name) {
+>>>>>>> Code prettifications
     if (name !== null && name !== '') {
       axios.get('texts/' + name + '.json')
         .then(res => {
