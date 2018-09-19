@@ -9,7 +9,7 @@ const Display = ({combo}) => {
   return (
     <div className='Display'>
       <SVG name={combo.image} />
-      <Sound name={combo.sound}/>
+      <Sound name={combo.sound} />
       <Text name={combo.text} />
     </div>
   )

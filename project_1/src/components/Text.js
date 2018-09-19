@@ -18,16 +18,16 @@ class Text extends Component {
     this.getText = this.getText.bind(this)
   }
 
-  componentWillMount() {
-      this.getText(this.props.name)
+  componentWillMount () {
+    this.getText(this.props.name)
   }
 
   componentWillReceiveProps (newProps) {
-      this.getText(newProps.name)
+    this.getText(newProps.name)
   }
 
-  getText(name) {
-    console.log("name", name)
+  getText (name) {
+    console.log('name', name)
     if (name !== null && name !== '') {
       axios.get('texts/' + name + '.json')
         .then(res => {
@@ -37,16 +37,39 @@ class Text extends Component {
   }
 
   render () {
+    var firstHalf
+    var secondHalf
+
+    if (this.state.data.text) {
+      console.log('Text')
+      var lines = this.state.data.text.split('\n')
+      let numLines = lines.length
+      if (lines == 1) {
+        lines = this.state.data.text.split('. ')
+      }
+      let splitAt = Math.floor(numLines / 2)
+      firstHalf = lines.slice(0, splitAt)
+      secondHalf = lines.slice(splitAt + 1, numLines)
+
+      firstHalf = firstHalf.join('\n')
+      secondHalf = secondHalf.join('\n')
+    }
     return (
 
-      <div className="Text">
-        <h3><b>{this.state.data.title}</b></h3>
-        <pre style={{maxWidth: '40vw', whiteSpace: 'pre-wrap'}}>{this.state.data.text}</pre>
-        {(this.state.data.author !== null) && <div><i>by {this.state.data.author}</i></div>}
-        {(this.state.data.artist !== null && this.state.data.writer !== null) && <div>
-          <div><i>Artist: {this.state.data.artist}</i></div>
-          <div><i>Writer: {this.state.data.writer}</i></div>
-        </div>}
+      <div className='Text'>
+        <div>
+          <h3><b>{this.state.data.title}</b></h3>
+          <pre>{firstHalf}</pre>
+        </div>
+        <div>
+          <pre>{secondHalf}</pre>
+          {(this.state.data.author !== null) && <div><i>by {this.state.data.author}</i></div>}
+          {(this.state.data.artist !== null && this.state.data.writer !== null) && <div>
+            <div><i>Artist: {this.state.data.artist}</i></div>
+            <div><i>Writer: {this.state.data.writer}</i></div>
+          </div>}
+        </div>
+
       </div>
     )
   }

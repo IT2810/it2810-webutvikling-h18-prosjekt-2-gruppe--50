@@ -3,6 +3,8 @@
 :root{
   --primary-color: #5BC1F2;
   --active-color: #2196f3;
+  --font-color: rgb(33, 37, 41);
+  --border-radius: 8px;
 }
 
 html,
@@ -16,7 +18,7 @@ body,
   text-align: center;
   display: grid;
   font-family: 'Roboto Condensed', serif;
-  font-color: rgb(33, 37, 41);
+  font-color: var(--font-color);
   text-decoration-color: rgb(33,37,41);
   background-color: #f8f9fa;
 
@@ -24,32 +26,37 @@ body,
   grid-template-areas:
     "header"
     "container"
+    "footer"
 }
 
-.App-header {
-  background-color: #8CFFBE;
-  color: #3D3D41;
-
+header {
   grid-area: header;
 }
 
-.App-title {
+footer {
+  grid-area: footer;
 }
 
-.App-intro {
-  font-size: large;
+footer h4 {
+  margin: 8px 16px;
+}
+
+header,
+footer {
+  background-color: #8CFFBE;
+  color: #3D3D41;
 }
 
 .container {
   display: grid;
-  width: 1200px;
   margin: 0 auto;
 
   grid-area: container;
+  grid-template-columns: 80% 20%;
 
   grid-template-areas:
-    "tabs tabs tabs"
-    "display display selectMenu";
+    "tabs tabs"
+    "display selectMenu";
 
 }
 
@@ -57,21 +64,25 @@ body,
   padding: 10px;
   grid-area: display;
   display: grid;
-  grid-auto-rows: 60px 500px;
 
-  grid-template-areas:
-      "svg textDiv"
-      "sound textDiv";
-
+  grid-template-columns: 70% 30%;
+  grid-template-columns: auto auto;
+  /** grid-template-areas:
+        "svg sound"
+        "textDiv textDiv";
+  **/
   box-shadow: inset 0 0 5px 0 #ccc;
-  border-radius: 4px;
+  border-radius: var(--border-radius);
   overflow: hidden;
 
-  margin: 20px;
+  margin: 16px;
+
+  background-color: white;
 }
 
 .SelectMenu {
   grid-area: selectMenu;
+  
 }
 
 .Select {
@@ -84,10 +95,20 @@ body,
 
 .SelectMenu .dropdown-menu {
   display: none;
+  margin: 16px;
+}
+
+.SelectMenu .dropdown-menu select {
+  margin: 8px;
 }
 
 .SelectMenu .radio-menu {
   display: block;
+  margin: 16px;
+}
+
+.SelectMenu .radio-menu h3 {
+  border-bottom: 2px solid grey;
 }
 
 .SVG {
@@ -95,6 +116,8 @@ body,
   width: 100%;
   height: 100%;
   padding: 16px;
+  grid-column: 1;
+  grid-row: 1;
 }
 
 .SVG div {
@@ -107,49 +130,90 @@ body,
 .Tabs {
   grid-area: tabs;
   display: flex;
+  margin-left: 16px;
+}
+
+.Tabs > div {
+  display: flex;
+  width: 80%;
+}
+
+.media.small {
+  display: none;
+}
+
+.media.large {
+  display: inline-block;
 }
 
 .Tab {
   display: inline-block;
+
 }
 
-.Tab button {
+.Tab {
   background-color: var(--primary-color);
   border: purple;
   border-width: 2px;
   color: white;
-  padding: 15px 32px;
+  padding: 8px 32px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  margin: 8px;
   width: 100%;
+
+
+  border-radius: var(--border-radius);
 }
 
-.Tab .button:hover {
+.Tab > p {
+  padding-right: 8px;
+}
+
+.Tab:hover {
   background-color: var(--active-color);
   cursor: pointer;
 }
 
-.Tab.active .button {
+.Tab.active {
   background-color: var(--active-color);
 }
 
 .Sound {
   grid-area: sound;
+  grid-column: 2;
+  grid-row: 1;
 }
 
 .Sound audio {
+  width: 80%;
+  margin: 0 16px;
 }
 
 .Text {
   grid-area: textDiv;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-column: 1 / 3;
+  grid-row: 2;
+}
+
+.Text pre {
+  white-space: -moz-pre-wrap;
+  white-space: pre-wrap;
+  /*word-wrap: break-word;*/
 }
 
 .hidden {
   display: none;
 }
 
+a {
+  color: var(--font-color);
+  text-decoration: none;
+}
 
 
 /*Test for responsive design*/
@@ -162,14 +226,31 @@ body,
   clear: both;
   display: block;
 }
+
 [class*="col-"] {
   float: left;
-  padding: 15px;
+  padding: 16px;
 }
 
 
+/* For tablets */
+@media only screen and (max-width: 1024px) {
+  
+  .container {
+    grid-template-columns: 70% 30%;
+  }
+
+  .Display {
+    display: flex;
+    flex-direction: column;
+
+    grid-template-columns: 100%;
+    grid-template-columns: auto auto;
+  }
+}
+
+/* For mobile phones */
 @media only screen and (max-width: 768px) {
-  /* For mobile phones: */
   [class*="col-"] {
     width: 25%;
     padding: 0 5px;
@@ -181,22 +262,34 @@ body,
 
   .container {
     display: grid;
-    grid-gap: 20px;
+    grid-gap: 16px;
     grid-template-areas:
       "selectMenu"
       "tabs"
       "display";
 
     width: 100%;
+    grid-template-columns: 100%;
   }
 
   .Display {
-    
+    display: flex;
+    flex-direction: column;
+    grid-template-columns: 100%
+  }
+
+  .Text {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 100%;
   }
 
   .SelectMenu .dropdown, 
   .Tabs {
     display: flex;
+  }
+
+  .Tabs {
     margin: 0 16px;
   }
 
@@ -224,8 +317,16 @@ body,
     margin: 8px 0px;
   }
 
-  .Tabs > div {
+  .Tabs > button {
     width: 80%;
+  }
+
+  .media.small {
+    display: inline-block;
+  }
+
+  .media.large {
+    display: none;
   }
 
   .Tab {
@@ -234,9 +335,28 @@ body,
   }
 }
 
-/**
-Custom radio buttons
-**/
+/* For small phones */
+@media only screen and (max-width: 425px) {
+
+  
+  .Tabs div {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .SelectMenu .dropdown-menu .dropdown select {
+    padding-right: 0px;
+    width: 80%;
+  }
+}
+
+
+@media only screen and (max-width: 320px) {
+  .SelectMenu .dropdown-menu .dropdown select span {
+    margin-left: -5px;
+  }
+}
+/* Custom radio buttons */
 
 /* The container */
 .Select .radio-select {
@@ -308,29 +428,4 @@ Custom radio buttons
   border-radius: 50%;
   background: white;
 }
-
-.svg_div {
-  width: 100%;
-  height: 400px;
-  background-image: url('logo.svg');
-}
-
-.button {
-  background-color: #33b5e5;
-  border: purple;
-  border-width: 2px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  width: 100%;
-}
-
-.button:hover {
-  background-color: #0099cc;
-  cursor: pointer;
-}
-
 
