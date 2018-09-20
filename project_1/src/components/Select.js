@@ -26,8 +26,8 @@ class Select extends Component {
       <div className="Select" onClick={this.onClick}>
         <label className="radio-select">
           {this.props.name}
-          <input type="radio" name={this.props.type}/>
-          <span className="checkmark"></span> 
+          <input checked={this.props.checked} onChange={()=>{}} type="radio" name={this.props.type}/>
+          <span className="checkmark"></span>
         </label>
       </div>
     )
@@ -35,4 +35,3 @@ class Select extends Component {
 }
 
 export default Select
-
