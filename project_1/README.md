@@ -1,4 +1,5 @@
-# Project 1
+# Project 2
+A responsive online display of pictures, music and text.
 
 ## Requirements
 For development, you will only need Node.js installed on your environement.
@@ -60,7 +61,7 @@ All styling and responsive design done in CSS without use of external CSS framew
 ### Use of axios
 - Better errorhandling
 
-### Structuring
+## Structuring
 The application is structured with the App component that has Tabs, Display and SelectMenu. 
 The Tabs include a Tab component for each tab, and the SelectMenu has a Select for each option. When going from wide screen to smaller screen, the SelectMenu becomes an dropdown list to save space. 
 The Display includes the SVG, Sound and Text component.
@@ -73,3 +74,6 @@ Started working on the responsive design in CSS while simultaneously working on 
 The design layout was planned before we began with the project so we were all on the same page, which helps :)
 
 Tested the design regularly and since we use different browsers and OSs, we had continueous cross-browser and cross-system testing.
+
+### Github
+We used feature branches and merged and rebased to the 'develop' branch when PRs were approved. 
