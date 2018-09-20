@@ -53,17 +53,20 @@ All styling and responsive design done in CSS without use of external CSS framew
 
 ### Loading SVG
 - Why we didn't use dangerouslySetInnerHTML
+    - For such a small project we didn't find it necessary.
 
 
 ### Use of stateless components
+A functionality in ES6 that makes code more compact and easier to read. It removes the need for the 'this' keyword,which in javascript can be a little confusing, making coding easier.
 
 
 ### Use of axios
+Axios is a JavaScript library used to make HTTP requests from node.js or XMLHttpRequests from the browser.
 - Better errorhandling
 
 ## Structuring
 The application is structured with the App component that has Tabs, Display and SelectMenu. 
-The Tabs include a Tab component for each tab, and the SelectMenu has a Select for each option. When going from wide screen to smaller screen, the SelectMenu becomes an dropdown list to save space. 
+The Tabs include a Tab component for each tab, and the SelectMenu has a Select for each option. When going from wide screen to smaller screen, the SelectMenu becomes a dropdown list to save space. 
 The Display includes the SVG, Sound and Text component.
 
 ## Testing
