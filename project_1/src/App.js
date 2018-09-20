@@ -38,11 +38,11 @@ class App extends Component {
   constructor () {
     super()
     let activeNr = 1
-    let image = Object.keys(svgMap)[activeNr]
-    let sound = Object.keys(soundMap)[activeNr]
-    let text = Object.keys(resourcesMap)[activeNr]
+    let image = Object.keys(svgMap)[activeNr-1]
+    let sound = Object.keys(soundMap)[activeNr-1]
+    let text = Object.keys(resourcesMap)[activeNr-1]
     this.state = {
-      customCombo: getCombo(image, sound, text, activeNr),
+      customCombo: getCombo(image, sound, text, activeNr-1),
       showCustomCombo: true,
       activeNr,
       combos: getCombos(image, sound, text),
