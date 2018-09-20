@@ -9,7 +9,6 @@ class Tabs extends Component {
     }
 
     this.onSelect = this.onSelect.bind(this)
-    this.createTabs = this.createTabs.bind(this)
   }
 
   onSelect (combo) {
@@ -17,25 +16,13 @@ class Tabs extends Component {
     this.props.onSelect(combo)
   }
 
-  createTabs () {
-    let tabs = []
-    for (let i = 1; i < 5; i++) {
-      let active = this.state.activeNr === i
-      let tab = <Tab active={active} key={i} tabNr={i} onSelect={this.onSelect} />
-      tabs.push(tab)
-    }
-
-    return tabs
-  }
 
   render () {
-    var tabs = this.createTabs()
-
     return (
       <div className='Tabs'>
         <p className='media small'> COMBO </p>
         <div>
-          { tabs }
+          {[1, 2, 3, 4].map((num, i) => <Tab active={this.state.activeNr === num} key={i} tabNr={num} onSelect={this.onSelect} />)}
         </div>
       </div>
     )
