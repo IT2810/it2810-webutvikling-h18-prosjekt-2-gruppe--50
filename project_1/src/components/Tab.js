@@ -26,7 +26,7 @@ class Tab extends Component {
 
     return (
       <button className={'Tab ' + activeClassName} onClick={this.onClick}>
-        <p className='media large'> Combo </p>
+        <p className='media large'> COMBO </p>
         <span> {this.state.tabNr} </span>
       </button>
     )

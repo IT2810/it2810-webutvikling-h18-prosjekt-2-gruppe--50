@@ -25,7 +25,7 @@ class Select extends Component {
     return (
       <div className="Select" onClick={this.onClick}>
         <label className="radio-select">
-          {this.props.name}
+          <p>{this.props.name}</p>
           <input checked={this.props.checked} onChange={()=>{}} type="radio" name={this.props.type}/>
           <span className="checkmark"></span>
         </label>

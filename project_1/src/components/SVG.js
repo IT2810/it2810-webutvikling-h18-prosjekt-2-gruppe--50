@@ -38,7 +38,7 @@ class SVG extends Component {
     let credits;
 
     if (this.state.image) {
-      credits = <p> Image found at <a target="_blank" href={this.state.creditsUrl} > openclipart.org </a> </p>
+      credits = <h5> Image found at <a target="_blank" href={this.state.creditsUrl} > openclipart.org </a> </h5>
     }
     
     return (
@@ -49,7 +49,6 @@ class SVG extends Component {
           }}
         />
         {credits}
-          
         
       </div>
     )

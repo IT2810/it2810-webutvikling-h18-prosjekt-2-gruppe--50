@@ -33,7 +33,7 @@ class Tabs extends Component {
 
     return (
       <div className='Tabs'>
-        <p className='media small'> Combo </p>
+        <p className='media small'> COMBO </p>
         <div>
           { tabs }
         </div>
