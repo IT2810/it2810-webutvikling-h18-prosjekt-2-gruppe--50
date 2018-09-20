@@ -69,30 +69,30 @@ class SelectMenu extends Component {
     return (
       <div className="SelectMenu">
         <div className="radio-menu">
-          <h4>Images</h4>
+          <h4>IMAGES</h4>
           {imageOptions.map((image, i) => (<Select key={i} checked={i === this.state.customImageIndex} name={image} type="image" onSelect={e => this.onSelect(e, image, i)} />))}
-          <h4>Sounds</h4>
+          <h4>SOUNDS</h4>
           {soundOptions.map((sound, i) => (<Select key={i} checked={i === this.state.customSoundIndex} name={sound} type="sound" onSelect={e => this.onSelect(e, sound, i)} />))}
-          <h4>Texts</h4>
+          <h4>TEXTS</h4>
           {textOptions.map((text, i) => (<Select key={i} checked={i === this.state.customTextIndex} name={text} type="text" onSelect={e => this.onSelect(e, text, i)} />))}
         </div>
 
 
         <div className="dropdown-menu">
           <div className="dropdown">
-            <p>Images</p>
+            <p>IMAGES</p>
             <select onChange={this.onSelectDrop} name="image">
               {imageOptions.map((image, i) => <option key={i} value={image} name="image">{image}</option>)}
             </select>
           </div>
           <div className="dropdown">
-            <p>Sounds</p>
+            <p>SOUNDS</p>
             <select onChange={this.onSelectDrop} name="sound">
               {soundOptions.map((sound, i) => <option key={i} value={sound}>{sound}</option>)}
             </select>
           </div>
           <div className="dropdown">
-            <p>Texts</p>
+            <p>TEXTS</p>
             <select onChange={this.onSelectDrop} name="text">
               {textOptions.map((text, i) => <option  key={i} value={text}>{text}</option>)}
             </select>

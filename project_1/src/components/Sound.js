@@ -37,16 +37,16 @@ class Sound extends Component {
   render() {
     let creds;
     if (this.state.sound) {
-      creds = <p>{this.state.credits}</p>
+      creds = <h5>The sound is {this.state.credits}</h5>
     }
 
     return (
       <div className="Sound">
-        {creds}
         <audio ref="audioTag" controls>
           <source src={this.state.sound}></source>
           Your browser does not support the audio element.
         </audio>
+        {creds}
       </div>
     )
   }

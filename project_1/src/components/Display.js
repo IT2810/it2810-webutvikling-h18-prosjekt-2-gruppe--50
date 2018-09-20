@@ -8,8 +8,8 @@ const Display = ({combo}) => {
   if (combo == null) return <div />
   return (
     <div className='Display'>
-      <SVG name={combo.image} />
       <Sound name={combo.sound} />
+      <SVG name={combo.image} />
       <Text name={combo.text} />
     </div>
   )

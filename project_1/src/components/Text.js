@@ -55,11 +55,11 @@ class Text extends Component {
     return (
 
       <div className='Text'>
-        <div>
+        <div className="col">
           <h3><b>{this.state.data.title}</b></h3>
           <pre>{firstHalf}</pre>
         </div>
-        <div>
+        <div className="col">
           <pre>{secondHalf}</pre>
           {(this.state.data.hasOwnProperty('author')) && <div><i>by {this.state.data.author}</i></div>}
           {(this.state.data.hasOwnProperty('artist') && this.state.data.hasOwnProperty('writer')) && <div>
